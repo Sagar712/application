@@ -318,7 +318,7 @@ function inputData(){
             let tempkey = localStorage.key(i);
             let strr = localStorage.getItem(tempkey);
             fullstr = fullstr.concat("("+(i+1)+") "+tempkey+"\n------------------>\n"
-            +strr+"\n--------------------------------------------------------------------\n");
+            +strr+"\n-----------------------------------------------------------------\n");
         }
         document.getElementById("outpara").innerText=fullstr;
     }
