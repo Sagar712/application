@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="manifest" href="./manifest.json"/>
+    <title>Application</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Secret Script</div>
+        <div class="seeting" onclick="changeicon()">
+          <i class="fas fa-bars" id="changeiconq"></i>
+        </div>
+      </header>
+      <div class="dropdown">
+        <ul class="options">
+          <li class="menu_item" onclick="location.href='#'">
+            <button class="navbar_links">How to use</button>
+          </li>
+          <li class="menu_item" onclick="location.href='#'">
+            <button class="navbar_links">Contact</button>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="ovelay2" onclick="overlayhandle()"></div>
+
+      
+      <div class="allContent" id="allcont">
+
+        <div id="content1">
+            <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Encryption App<br/><hr/></span>
+                <br/>
+                
+                <form onsubmit="return false">
+                    
+                    <br/>
+                    <label for="keyy"> </label>
+                     <input type="text" name="key" id="keyy" placeholder="enter key" autocomplete="off"  /><br/><br/>
+                     <label for="keyy2"></label> <input type="text" name="msg" placeholder="enter message" id="keyy2" autocomplete="off"/>
+                     <br/>
+                     <div class="buttonset">
+                        <button type="submit" id="butt" onclick="encrypt()">Encrypt</button>
+                        <button id="buttReset" onclick="reset()">Reset</button>
+                        <button type="submit" id="butt" onclick="decrypt()">Decrypt</button>
+                     </div>
+                    
+                    <br/><br/>
+                    <p id="crypted">
+                    
+                    </p>
+                    <br/><br/>
+                    
+                </form>
+                <p id="encryted">
+                    
+                </p>
+        </div>
+
+        <div id="content2">
+          <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Create List<br/><hr/></span>
+                <br/>
+                <div class="inp">
+                  <input type="text" placeholder=" Name" autocomplete="off" id="name">
+                  <input type="text" placeholder=" Quantity" autocomplete="off" id="quant">
+                  <input type="text" placeholder=" Price" autocomplete="off" id="price">
+  
+              </div>
+              <div>
+                <button onclick="storageo()" id="addbtn">Storage</button>
+                <button onclick="resetval()" id="addbtn">Reset</button>
+                <button onclick="addval()" id="addbtn">Add</button>
+            </div>
+            
+
+            <table id="allcell">
+                
+
+            </table>
+            <div id="totals"></div>
+        </div>
+
+        <div id="content3">
+            <h2>Storage Application here</h2>
+
+        </div>
+
+
+
+      </div>
+
+
+
+     
+    <footer>
+      <div  class="icons" onclick="swipeleft1()">
+        <i class="fas fa-mask" id="icon1"></i>
+      </div>
+      <div class="icons" onclick="swipeleft2()">
+        <i class="fas fa-book" id="icon2"></i>
+      </div>
+
+      <div class="icons" onclick="swipeleft3()">
+        <i class="fas fa-pen-square" id="icon3"></i>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+
+  
+    
+</body>
+</html>
