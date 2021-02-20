@@ -24,10 +24,10 @@
       </header>
       <div class="dropdown">
         <ul class="options">
-          <li class="menu_item" onclick="location.href='#'">
+          <li class="menu_item" onclick="location.href='./howto.html'">
             <button class="navbar_links">How to use</button>
           </li>
-          <li class="menu_item" onclick="location.href='#'">
+          <li class="menu_item" onclick="location.href='./contact.html'">
             <button class="navbar_links">Contact</button>
           </li>
         </ul>
@@ -41,12 +41,13 @@
         <div id="content1">
             <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Encryption App<br/><hr/></span>
                 <br/>
-                
-               
-                    
                     <br/>
                     <label for="keyy"> </label>
-                     <input type="text" name="key" id="keyy" placeholder="enter key" autocomplete="off"  /><br/><br/>
+                    <div class="tooltip">
+                    <span class="tooltiptext" id="myTooltip2">Enter key !</span>
+                     <input type="number" name="key" id="keyy" placeholder="enter key" autocomplete="off"  />
+                    </div>
+                     <br/>
                      <label for="keyy2"></label> <input type="text" name="msg" placeholder="enter message" id="keyy2" autocomplete="off"/>
                      <br/>
                      <div class="buttonset">
@@ -54,12 +55,15 @@
                         <button id="buttReset" onclick="reset()">Reset</button>
                         <button type="submit" id="butt" onclick="decrypt()">Decrypt</button>
                      </div>
-                    
-                    <br/><br/>
+                     <div class="tooltip">
+                       <span class="tooltiptext" id="myTooltip">Copied !</span>
+                      <button onclick="copyElementText('myTooltip')" id="butt">Copy</button>
+                     </div>
+                     
                     <p id="crypted">
                     
                     </p>
-                    <br/><br/>
+                    <br/>
                     
                 
                 <p id="encryted">
@@ -72,8 +76,8 @@
                 <br/>
                 <div class="inp">
                   <input type="text" placeholder=" Name" autocomplete="off" id="name">
-                  <input type="text" placeholder=" Quantity" autocomplete="off" id="quant">
-                  <input type="text" placeholder=" Price" autocomplete="off" id="price">
+                  <input type="number" placeholder=" Quantity" autocomplete="off" id="quant">
+                  <input type="number" placeholder=" Price" autocomplete="off" id="price">
   
               </div>
               <div>
@@ -91,8 +95,21 @@
         </div>
 
         <div id="content3">
-            <h2>Storage Application here</h2>
-
+          <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Storage Book<br/><hr/></span>
+          <br/>
+          <input type="text" id="dbtitle" placeholder=" Title" autocomplete="off">
+          <br/>
+          <input type="text" id="dbvalue" placeholder=" Info you want to store" autocomplete="off">
+          <br/>
+          <div class="allbtns">
+            <button onclick="inputData()" class="indbtn">Add to storage</button>
+            <button onclick="deleteData()" class="indbtn">Delete all</button>
+          </div>
+          <br/>
+          <span style="color: white;">Storage</span>
+            
+              <p id="outpara"></p>
+            
         </div>
 
 

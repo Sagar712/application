@@ -1,0 +1,20 @@
+*{
+    color: rgb(185, 185, 185);
+    font-family: 'Kumbh Sans', sans-serif;
+}
+body{
+    background-color: rgb(29, 75, 90);
+}
+
+.contacthere{
+    width: 100%;
+    margin-top: 30vh;
+    display: flex;
+    justify-content: center;
+    background-color:  rgb(1, 41, 48);
+    border: solid 1px yellow;
+    border-radius: 15px;
+    animation: mmm infinite;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+}

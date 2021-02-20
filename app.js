@@ -1,3 +1,4 @@
+
 if("serviceWorker" in navigator){
     navigator.serviceWorker.register("sw.js").then(
         registration => {
@@ -8,7 +9,6 @@ if("serviceWorker" in navigator){
         console.log("SW failed");
     })
 }
-
 
 function swipeleft1(){
     document.getElementById("content1").style.transform="translateX(0%)";
@@ -122,7 +122,7 @@ function encrypt(){
         
     }	
     else
-        alert("key not entered");
+        copyElementText("myTooltip2");
     
 }
 
@@ -163,7 +163,7 @@ function decrypt(){
         document.getElementById("crypted").innerHTML="Decrypted Message:";
     }
     else
-        alert("Please enter a key");
+        copyElementText("myTooltip2");
 }
 
 let names = [];
@@ -267,4 +267,76 @@ function totalcalc(str){
 
 	return str;
 
+}
+
+function copyElementText(idd) {
+    var text = document.getElementById("encryted").innerText;
+    var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = text;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+    let tooltip = document.getElementById(idd);
+    tooltip.animate([{
+        visibility: 'visible',
+        opacity: '1'
+    }, 
+  {
+      visibility: 'hidden',
+      opacity: '0'
+  }],
+  {
+      duration:1000
+  });
+    
+}
+
+function inputData(){
+	let fullstr="";
+	let inpu = document.getElementById("dbtitle").value;
+    let info = document.getElementById("dbvalue").value;
+	let isPrsesent = false;
+    if(inpu!=""){
+        for(let i=0; i<localStorage.length; i++){
+            if(localStorage.key(i)==inpu)
+                isPrsesent=true;
+        }
+    
+        if(!isPrsesent){
+            localStorage.setItem(inpu, info);
+            fullstr = localStorage.getItem(inpu);
+            document.getElementById("outpara").innerText='Added!! "'+inpu+'"\n\n'+"Please refresh and press Add storage to see all data";
+        }
+        else{
+            document.getElementById("outpara").innerText="This title already exists, Please use different title";
+        }
+    }
+    else{
+        fullstr="";
+        for(let i=0; i< localStorage.length; i++){
+            let tempkey = localStorage.key(i);
+            let strr = localStorage.getItem(tempkey);
+            fullstr = fullstr.concat("("+(i+1)+") "+tempkey+"\n------------------>\n"
+            +strr+"\n--------------------------------------------------------------------\n");
+        }
+        document.getElementById("outpara").innerText=fullstr;
+    }
+    
+}
+
+function deleteData(){
+    if(confirm("Are you sure? You are about to wipe out whole data")){
+        let len = localStorage.length;
+        for(let i=0; i< len; i++){
+            let tempkey = localStorage.key(0);
+            localStorage.removeItem(tempkey);
+            
+        }
+        alert("All data deleted!!");
+        document.getElementById("outpara").innerText="Empty!";
+    }
+    else{
+        alert("Deletion aborted")
+    }
 }

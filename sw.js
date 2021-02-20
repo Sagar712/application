@@ -1,7 +1,7 @@
 self.addEventListener("install", e => {
     e.waitUntil(
         caches.open("static").then(cache => {
-            return cache.addAll(["./", "./app.js", "./style.css", "./mask294.png"]);
+            return cache.addAll(["./", "./app.js", "./style.css", "./mask294.png","./contact.html", "./howto.html", "./otherstyle.css"]);
         })
     );
 });
@@ -16,3 +16,4 @@ self.addEventListener("fetch", e => {
     );
 
 });
+
