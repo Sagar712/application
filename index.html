@@ -58,22 +58,10 @@
                      <div class="tooltip">
                        <span class="tooltiptext" id="myTooltip">Copied !</span>
                       <button onclick="copyElementText('myTooltip')" id="butt">Copy</button>
-                      <button onclick="handleClick()" id="butt">Select</button>
+                      <button onclick="handleClick()" id="butt">Select</button> 
                      </div>
 
-                     <div class="popup" id="popup">
-                      <div class="titler">
-                        <div class="header">Choose option</div>
-                        <button onclick="closeall()">x</button>
-                    </div>
-                     <div class="content">
-                      <ul id="mainlist">
-                          <li onclick="getVal(this)">Empty!!</li>
-                          
-                      </ul>
                      
-                  </div>
-                </div>
                   <div class="overlay" id="overlay" onclick="closeall()"></div>
                      
                      
@@ -87,6 +75,21 @@
                     
                 </p>
         </div>
+        <div class="popup" id="popup">
+          <div class="titler">
+            <div class="header">Choose Title</div>
+            <button onclick="closeall()" class="btnclss">x</button>
+        </div>
+        <div class="content">
+          <ul id="mainlist">
+              <li onclick="getVal(this)">Empty!!</li>
+              
+          </ul>
+         
+      </div>
+         
+    </div>
+        
 
         <div id="content2">
           <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Create List<br/><hr/></span>
