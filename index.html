@@ -15,126 +15,45 @@
     <title>Application</title>
 </head>
 <body>
-
-    <header>
-        <div class="logo">Secret Script</div>
-        <div class="seeting" onclick="changeicon()">
-          <i class="fas fa-bars" id="changeiconq"></i>
-        </div>
-      </header>
-      <div class="dropdown">
-        <ul class="options">
-          <li class="menu_item" onclick="location.href='./howto.html'">
-            <button class="navbar_links">How to use</button>
-          </li>
-          <li class="menu_item" onclick="location.href='./contact.html'">
-            <button class="navbar_links">Contact</button>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="ovelay2" onclick="overlayhandle()"></div>
-
-      
-      <div class="allContent" id="allcont">
-
-        <div id="content1">
-            <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Encryption App<br/><hr/></span>
-                <br/>
-                    <br/>
-                    <label for="keyy"> </label>
-                    <div class="tooltip">
-                    <span class="tooltiptext" id="myTooltip2">Enter key !</span>
-                     <input type="number" name="key" id="keyy" placeholder="enter key" autocomplete="off"  />
-                    </div>
-                     <br/>
-                     <label for="keyy2"></label> <input type="text" name="msg" placeholder="enter message" id="keyy2" autocomplete="off"/>
-                     <br/>
-                     <div class="buttonset">
-                        <button type="submit" id="butt" onclick="encrypt()">Encrypt</button>
-                        <button id="buttReset" onclick="reset()">Reset</button>
-                        <button type="submit" id="butt" onclick="decrypt()">Decrypt</button>
-                     </div>
-                     <div class="tooltip">
-                       <span class="tooltiptext" id="myTooltip">Copied !</span>
-                      <button onclick="copyElementText('myTooltip')" id="butt">Copy</button>
-                     </div>
-                     
-                    <p id="crypted">
-                    
-                    </p>
-                    <br/>
-                    
-                
-                <p id="encryted">
-                    
-                </p>
-        </div>
-
-        <div id="content2">
-          <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Create List<br/><hr/></span>
-                <br/>
-                <div class="inp">
-                  <input type="text" placeholder=" Name" autocomplete="off" id="name">
-                  <input type="number" placeholder=" Quantity" autocomplete="off" id="quant">
-                  <input type="number" placeholder=" Price" autocomplete="off" id="price">
-  
-              </div>
-              <div>
-                <button onclick="storageo()" id="addbtn">Storage</button>
-                <button onclick="resetval()" id="addbtn">Reset</button>
-                <button onclick="addval()" id="addbtn">Add</button>
-            </div>
-            
-
-            <table id="allcell">
-                
-
-            </table>
-            <div id="totals"></div>
-        </div>
-
-        <div id="content3">
-          <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Storage Book<br/><hr/></span>
-          <br/>
-          <input type="text" id="dbtitle" placeholder=" Title" autocomplete="off">
-          <br/>
-          <input type="text" id="dbvalue" placeholder=" Info you want to store" autocomplete="off">
-          <br/>
-          <div class="allbtns">
-            <button onclick="inputData()" class="indbtn">Add to storage</button>
-            <button onclick="deleteData()" class="indbtn">Delete all</button>
-          </div>
-          <br/>
-          <span style="color: white;">Storage</span>
-            
-              <p id="outpara"></p>
-            
-        </div>
-
-
-
-      </div>
-
-
-
-     
-    <footer>
-      <div  class="icons" onclick="swipeleft1()">
-        <i class="fas fa-mask" id="icon1"></i>
-      </div>
-      <div class="icons" onclick="swipeleft2()">
-        <i class="fas fa-book" id="icon2"></i>
-      </div>
-
-      <div class="icons" onclick="swipeleft3()">
-        <i class="fas fa-pen-square" id="icon3"></i>
-      </div>
-    </footer>
-
-    <script src="./app.js"></script>
-
-  
+    <button onclick="handleClick()">Trigger</button>
+    <button onclick="handleSubmit()">SUBMIT</button>
     
+
+    <input type="text" id="inpu">
+    
+
+    <div class="popup" id="popup">
+        <div class="titler">
+            <div class="header">Choose option</div>
+            <button onclick="closeall()">x</button>
+        </div>
+        <div class="content">
+            <ul>
+                <li onclick="getVal(this)">Namaste from Sagar.</li>
+                <li onclick="getVal(this)">kkjsk</li>
+                <li onclick="getVal(this)"> Sagar.</li>
+                <li onclick="getVal(this)">from Sagar.</li>
+                <li onclick="getVal(this)">NamastSagar.</li>
+                <li onclick="getVal(this)">Namaste from </li>
+                <li onclick="getVal(this)"> from Sagar.</li>
+                
+
+            </ul>
+           
+        </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="closeall()"></div>
+    <p id="printlns"></p>
+
+    <div class="allcontent">
+        <div class="con1" id="con1"></div>
+        <div class="con2" id="con2"></div>
+        <div class="con3" id="con3"></div>
+
+    </div>
+
+    <button onclick="togle()"> click me</button>
+
+    <script src="./index.js"></script>
 </body>
 </html>
