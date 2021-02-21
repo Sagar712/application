@@ -179,6 +179,10 @@ header{
     transition: all 0.3s ease-in-out;
     transform: translateX(0%);
 }
+
+#keyy, #keyy2{
+    width: 20vw;
+}
 #content2{
     background-color: rgb(37, 141, 93);
     position: absolute;
@@ -439,13 +443,13 @@ hr{
 	border-radius: 5px;
 	color: rgb(49, 0, 30);
     box-shadow: 0px 0px 5px 3px rgb(31, 77, 92);
-    margin: 1rem 0.28rem;
+    margin: 0.5rem 0.28rem;
 }
 #butt:active{
-    background-color: rgb(172, 44, 44);
+    background-color: rgb(255, 187, 187);
 }
 #buttReset:active{
-    background-color: rgb(172, 44, 44);
+    background-color: rgb(253, 186, 186);
 }
 
 #keyy2{
@@ -508,14 +512,14 @@ td{
 	width: 5rem;
 	font-size: 1rem;
 	font-weight: bold;
-	background-color: rgb(255, 117, 117);
+	background-color: rgb(168, 168, 168);
 	border-radius: 5px;
 	color: rgb(49, 0, 30);
     box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
     margin: 1rem 0.28rem;
 }
 #addbtn:active{
-	background-color: rgb(119, 31, 43);
+	background-color: rgb(228, 228, 228);
 }
 .clos{
 	border: none;
@@ -552,7 +556,7 @@ td{
 	border:1px solid rgb(0, 38, 51);
     border-radius: 5px;
 }
-#name, #quant, #price{
+#name, #quant, #price, #dbtitle, #dbvalue{
     border: 1px solid  rgb(0, 38, 51);
     background-color: rgb(177, 198, 201);
     color: rgb(0, 38, 51);
@@ -575,9 +579,48 @@ td{
     transition: all 0.3s ease-in-out;
     transform: translateX(200%);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.allbtns{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+.indbtn{
+    height: 2.5rem;
+    width: 9rem;
+    background-color: rgb(0, 153, 102);
+    outline: none;
+    border:none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: rgb(8, 34, 34);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
+    margin: 0.5rem 0.62rem;
+}
+.indbtn:active{
+    background-color: rgb(30, 226, 161);
+}
+
+#outpara{
+
+    font-size: 1.1rem;
+    border: 1px solid  rgb(152, 190, 178);
+    border-left: none;
+    border-right: none;
+    background-color: rgb(17, 48, 58);
+    padding: 15px;
+    width: 92%;
+    word-wrap: break-word;
+    color: rgb(180, 219, 206);
+    margin-bottom: 5rem;
+    text-align: left;
+}
+
 
 footer{
     position: fixed;
@@ -598,3 +641,109 @@ footer{
     height: 1.5rem;
     width: 100vw;
 }
+
+.tooltip {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 90px;
+    background-color: rgb(31, 31, 31);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(31, 31, 31) transparent transparent transparent;
+  }
+  
+  .content{
+    height: 10.4rem;
+    overflow-y: scroll;
+    background-color: rgb(45, 111, 233);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(12, 12, 12);
+    opacity: 0.6;
+    display: none;
+    z-index: 50;
+    transition:all 0.7s ease ;
+}
+
+.overlay.active{
+    display: block;
+}
+
+.titler{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: rgb(0, 71, 202);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 13rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    z-index: 999;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 4px #000000;
+    transform: scale(0.01);
+}
+.popup.active{
+    visibility: visible;
+    transform: translate(-50%,-30%);
+}
+ul{
+    list-style: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+li{
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+}
+li:nth-child(odd){
+    background-color: rgb(74, 135, 248);
+}
+
+  
