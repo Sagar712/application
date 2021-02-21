@@ -12,7 +12,6 @@ if("serviceWorker" in navigator){
 
 
 
-
 function swipeleft1(){
     document.getElementById("content1").style.transform="translateX(0%)";
     document.getElementById("content2").style.transform="translateX(100%)";
@@ -375,7 +374,7 @@ function putVals(){
     let fullstr="";
     for(let i=0; i< localStorage.length; i++){
         let tempkey = localStorage.key(i);
-        fullstr = fullstr.concat(`<li onclick="getVal(this)">${tempkey}</li>`)
+        fullstr = fullstr.concat(`<li onclick="getVal(this)" class="ineerli">${tempkey}</li>`)
     }   
     list.innerHTML=fullstr; 
 }
