@@ -10,6 +10,9 @@ if("serviceWorker" in navigator){
     })
 }
 
+
+
+
 function swipeleft1(){
     document.getElementById("content1").style.transform="translateX(0%)";
     document.getElementById("content2").style.transform="translateX(100%)";
@@ -318,7 +321,7 @@ function inputData(){
             let tempkey = localStorage.key(i);
             let strr = localStorage.getItem(tempkey);
             fullstr = fullstr.concat("("+(i+1)+") "+tempkey+"\n------------------>\n"
-            +strr+"\n-----------------------------------------------------------------\n");
+            +strr+"\n--------------------------------------------------------------------\n");
         }
         document.getElementById("outpara").innerText=fullstr;
     }
@@ -334,9 +337,45 @@ function deleteData(){
             
         }
         alert("All data deleted!!");
-        document.getElementById("outpara").innerText="Empty!";
     }
     else{
         alert("Deletion aborted")
     }
+}
+
+function handleClick(){
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    console.log("clicked");
+    popup.classList.toggle("active");
+    overlay.classList.toggle("active");
+    putVals();
+}
+
+function closeall(){
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    console.log("clicked");
+    popup.classList.toggle("active");
+    overlay.classList.toggle("active");
+
+}
+
+function getVal(e){
+    closeall();
+    let textt = localStorage.getItem(e.textContent)
+    document.getElementById("keyy2").value=textt;
+    console.log(e.textContent);
+    decrypt();
+}
+
+function putVals(){
+    list = document.getElementById("mainlist");
+
+    let fullstr="";
+    for(let i=0; i< localStorage.length; i++){
+        let tempkey = localStorage.key(i);
+        fullstr = fullstr.concat(`<li onclick="getVal(this)">${tempkey}</li>`)
+    }   
+    list.innerHTML=fullstr; 
 }
