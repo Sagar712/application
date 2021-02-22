@@ -247,6 +247,16 @@ header{
     font-size: 1.3rem;  
     font-weight: bold;
     overflow: hidden;
+    animation: headanim 0.3s forwards ease-out;
+    transform: translateY(-200%);
+}
+@keyframes headanim{
+    from{
+        transform: translateY(-200%); 
+    }
+    to{
+        transform: translateY(0%); 
+    }
 }
 
 .seeting{
@@ -393,14 +403,33 @@ header{
     position: absolute;
     min-height: inherit;
     width: 100vw;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(0%);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    opacity: 0;
+    transform: translateX(100%);
+    animation: conanim 0.2s forwards 0.3s ease-out;
 
 }
+@keyframes conanim{
+    0%{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    90%{
+        opacity: 0.5;
+        transform: translateX(-10%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+
 #encryted{
     font-size: 1.1rem;
     border: 1px solid  rgb(255, 117, 117);
@@ -443,7 +472,7 @@ hr{
 	border-radius: 5px;
 	color: rgb(49, 0, 30);
     box-shadow: 0px 0px 5px 3px rgb(31, 77, 92);
-    margin: 0.5rem 0.28rem;
+    margin: 0.5rem 1rem;
 }
 #butt:active{
     background-color: rgb(255, 187, 187);
@@ -477,7 +506,7 @@ hr{
     position: absolute;
     width: 100vw;
     min-height: inherit;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(100%);
     display: flex;
     flex-direction: column;
@@ -576,7 +605,7 @@ td{
     position: absolute;
     width: 100vw;
     min-height: inherit;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: translateX(200%);
     display: flex;
     flex-direction: column;
@@ -636,6 +665,16 @@ footer{
     background-color: rgb(0, 38, 51);
     overflow: hidden;
     z-index: 99;
+    animation: footanim 0.3s forwards;
+    transform: translateY(200%);
+}
+@keyframes footanim{
+    from{
+        transform: translateY(200%); 
+    }
+    to{
+        transform: translateY(0%); 
+    }
 }
 .footla{
     height: 1.5rem;
