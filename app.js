@@ -10,8 +10,6 @@ if("serviceWorker" in navigator){
 }
 
 
-
-
 function swipeleft1(){
     document.getElementById("content1").style.transform="translateX(0%)";
     document.getElementById("content2").style.transform="translateX(100%)";
@@ -108,26 +106,24 @@ function encrypt(){
             }
                 
             conv = series[(exchange+j)%95];
-            if(firstspace==true){
-                if(conv==" ")
-                break;
+            if(conv ==" "){
+                conv="©";
             }
-            firstspace=false;
-            if(i === msg.length-2)
-                firstspace=true;
             encypted = encypted.concat(conv);
             looper = (looper+1)%len;
         }
+        /*
         if(firstspace==true){
             document.getElementById("crypted").innerHTML=`Please change ${looper+1}'th digit to avoid SPACE error <br/>This occurs when encrypted code is having first or last letter as a SPACE`;
             document.getElementById("encryted").innerHTML="! Warning !<br/>SPACE at the beginning or at the end";
         }
+        */
         
-        else{
+        
             console.log("Encrypted:"+encypted);
             document.getElementById("encryted").innerText=encypted;
             document.getElementById("crypted").innerHTML="Encrypted Message:";
-        }
+        
         
     
     
@@ -149,8 +145,12 @@ function decrypt(){
 
 		for(let i=0; i<msg.length; i++) {
 			j= parseInt(key.charAt(looper));
+            let temp = msg.charAt(i)
+            if(temp=="©")
+                temp = " ";
+            
 			for(let k=0; k<series.length; k++) {
-				if(series[k] === msg.charAt(i)) {
+				if(series[k] === temp) {
 					exchange = k;
 					break;
 				}
