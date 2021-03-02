@@ -7,6 +7,11 @@ body{
     width: 100%;
     overflow-x: hidden;
     background-color: black;
+    
+}
+html, body{
+    min-height: 100%;
+    height: 100%;
 }
 
 
@@ -247,6 +252,16 @@ header{
     font-size: 1.3rem;  
     font-weight: bold;
     overflow: hidden;
+    animation: headanim 0.3s forwards ease-out;
+    transform: translateY(-200%);
+}
+@keyframes headanim{
+    from{
+        transform: translateY(-200%); 
+    }
+    to{
+        transform: translateY(0%); 
+    }
 }
 
 .seeting{
@@ -393,14 +408,31 @@ header{
     position: absolute;
     min-height: inherit;
     width: 100vw;
-    transition: all 0.3s ease-in-out;
     transform: translateX(0%);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    opacity: 0;
+    animation: conanim 0.2s forwards 0.3s ease-out;
 
 }
+@keyframes conanim{
+    0%{
+        opacity: 0;
+        
+    }
+    60%{
+        opacity: 0.5;
+        
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+
 #encryted{
     font-size: 1.1rem;
     border: 1px solid  rgb(255, 117, 117);
@@ -412,6 +444,7 @@ header{
     word-wrap: break-word;
     color: blanchedalmond;
     margin-bottom: 5rem;
+    text-align: left;
 }
 
 #keyy,#pass,#user{
@@ -443,7 +476,7 @@ hr{
 	border-radius: 5px;
 	color: rgb(49, 0, 30);
     box-shadow: 0px 0px 5px 3px rgb(31, 77, 92);
-    margin: 0.5rem 0.28rem;
+    margin: 0.5rem 1rem;
 }
 #butt:active{
     background-color: rgb(255, 187, 187);
@@ -457,13 +490,55 @@ hr{
     background-color: rgb(177, 198, 201);
     color: rgb(0, 38, 51);
     font-weight: bold;
-    height: 2.5rem;
     font-size: 1rem;
     width: 85vw;
     outline:none;
+    height: 10rem;
     border-radius: 4px;
     box-shadow: 0px 0px 1px 1px rgb(17, 48, 58);
     
+}
+
+.inpuEdit{
+    position: fixed;
+    height: 90vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.644);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    visibility: hidden;
+    
+}
+#keyy3{
+    border: 1px solid  rgb(0, 38, 51);
+    background-color: rgb(177, 198, 201);
+    color: rgb(0, 38, 51);
+    font-weight: bold;
+    font-size: 1rem;
+    width: 90vw;
+    outline:none;
+    height: 70vh;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px 1px rgb(17, 48, 58);
+}
+.btnclss2{
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    margin: 1rem auto;
+    height: 2.5rem;
+    width: 2.9rem;
+    margin-top: -10rem;
+}
+.btnclss2:active{
+    background-color: yellow;
 }
 
 .buttonset{
@@ -472,12 +547,13 @@ hr{
     justify-content: space-evenly;
 }
 
+
+
 #content2{
     background-color: rgb(36, 91, 109);
     position: absolute;
     width: 100vw;
     min-height: inherit;
-    transition: all 0.3s ease-in-out;
     transform: translateX(100%);
     display: flex;
     flex-direction: column;
@@ -569,6 +645,10 @@ td{
     box-shadow: 0px 0px 1px 1px rgb(17, 48, 58);
 }
 
+#dbvalue{
+    height: 8rem;
+}
+
 
 
 #content3{
@@ -576,7 +656,6 @@ td{
     position: absolute;
     width: 100vw;
     min-height: inherit;
-    transition: all 0.3s ease-in-out;
     transform: translateX(200%);
     display: flex;
     flex-direction: column;
@@ -602,7 +681,20 @@ td{
     box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
     margin: 0.5rem 0.62rem;
 }
-.indbtn:active{
+.indbtndel{
+    height: 2.5rem;
+    width: 9rem;
+    background-color: rgb(0, 153, 102);
+    outline: none;
+    border:none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: rgb(128, 0, 38);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
+    margin: 0.5rem 0.62rem;
+}
+.indbtn:active, indbtndel:active{
     background-color: rgb(30, 226, 161);
 }
 
@@ -636,6 +728,16 @@ footer{
     background-color: rgb(0, 38, 51);
     overflow: hidden;
     z-index: 99;
+    animation: footanim 0.3s forwards;
+    transform: translateY(200%);
+}
+@keyframes footanim{
+    from{
+        transform: translateY(200%); 
+    }
+    to{
+        transform: translateY(0%); 
+    }
 }
 .footla{
     height: 1.5rem;
@@ -645,7 +747,8 @@ footer{
 .tooltip {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: space-evenly;
   }
   
   .tooltip .tooltiptext {
@@ -682,6 +785,7 @@ footer{
     background-color: rgb(45, 111, 233);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    z-index: 2000;
 }
 
 .overlay{
@@ -704,10 +808,30 @@ footer{
 .titler{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 15px;
-    background-color: rgb(0, 71, 202);
+    background-color: rgb(0, 53, 151);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    color: #fff;
+    height: 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.btnclss{
+    color: white;
+    background-color: rgb(0, 53, 151);
+    border: none;
+    outline: none;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    box-shadow: 0px 0px 6px 1px  rgb(0, 15, 44);
+}
+.btnclss:active{
+    box-shadow: 0px 0px 0px 0px  rgb(0, 15, 44);
+    border: 1px solid rgb(0, 15, 44);
 }
 .popup{
     position: fixed;
@@ -721,7 +845,7 @@ footer{
     z-index: 999;
     visibility: hidden;
     transition: all 0.3s ease;
-    box-shadow: 2px 2px 4px #000000;
+    box-shadow: 0px 0px 10px 2px #000000;
     transform: scale(0.01);
 }
 .popup.active{
@@ -734,15 +858,15 @@ ul{
   padding: 0;
   cursor: pointer;
 }
-li{
-    height: 2rem;
+.ineerli{
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     list-style: none;
 }
-li:nth-child(odd){
+.ineerli:nth-child(odd){
     background-color: rgb(74, 135, 248);
 }
 
