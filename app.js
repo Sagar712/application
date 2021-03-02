@@ -42,6 +42,8 @@ function swipeleft3(){
 
 let chngeicn=0;
 const overlay = document.querySelector(".ovelay2");
+let isMenuOpened = false;
+
 function changeicon(){
     chngeicn++;
     const drop = document.querySelector(".dropdown");
@@ -370,8 +372,11 @@ function handleClick(){
 function handleEdit(){
     let inputval = document.getElementById("keyy2").value;
     let targetval = document.getElementById("keyy3");
-    let str = inputval;
-    targetval.value = inputval;
+    let output = document.getElementById("encryted").innerText;
+    if(isMenuOpened && output!="")
+        targetval.value = output;
+    else
+        targetval.value = inputval;
     document.getElementById("inpuEdit").style.visibility="visible";
 
 }
@@ -398,7 +403,9 @@ function getVal(e){
     let textt = localStorage.getItem(e.textContent)
     document.getElementById("keyy2").value=textt;
     console.log(e.textContent);
+    isMenuOpened = true;
     decrypt();
+    
 }
 
 function putVals(){
