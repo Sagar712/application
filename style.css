@@ -12,6 +12,7 @@ body{
 
 
 
+
 @media screen and (min-width:960px){
 header{
     display: flex;
@@ -778,7 +779,7 @@ footer{
   .content{
     height: 10.4rem;
     overflow-y: scroll;
-    background-color: rgb(45, 111, 233);
+    background-color: rgb(174, 186, 207);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     z-index: 2000;
@@ -790,7 +791,7 @@ footer{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(12, 12, 12);
+    background-color: rgba(56, 56, 56, 0.801);
     opacity: 0.6;
     display: none;
     z-index: 50;
@@ -863,7 +864,10 @@ ul{
     list-style: none;
 }
 .ineerli:nth-child(odd){
-    background-color: rgb(74, 135, 248);
+    background-color: rgb(122, 168, 253);
+}
+.ineerli:nth-child(even){
+    background-color: rgb(52, 123, 255);
 }
 
   
