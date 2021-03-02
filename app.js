@@ -100,6 +100,11 @@ function encrypt(){
                     break;
                 }
             }
+            if(msg.charAt(i)=="\n"){
+                encypted = encypted.concat("\n");
+                continue;
+            }
+                
             conv = series[(exchange+j)%95];
             if(firstspace==true){
                 if(conv==" ")
@@ -150,11 +155,16 @@ function decrypt(){
 				}
 			}
             let conv;
+            if(msg.charAt(i)=="\n"){
+                encypted = encypted.concat("\n");
+                continue;
+            }
 			if(exchange-j<0) {
 				conv = series[95+(exchange-j)];
 			}
 			else
 				conv = series[exchange-j];
+            
 			
 			encypted = encypted.concat(conv);
 			looper = (looper+1)%len;
@@ -274,6 +284,7 @@ function totalcalc(str){
 function copyElementText(idd) {
     var text = document.getElementById("encryted").innerText;
     var elem = document.createElement("textarea");
+    document.getElementById("dbvalue").innerText = text;
     document.body.appendChild(elem);
     elem.value = text;
     elem.select();
@@ -311,6 +322,12 @@ function inputData(){
             document.getElementById("outpara").innerText='Added!! "'+inpu+'"\n\n'+"Please refresh and press Add storage to see all data";
         }
         else{
+            if(confirm("Do u want to update content of existing title?")){
+                localStorage.setItem(inpu, info);
+                fullstr = localStorage.getItem(inpu);
+                document.getElementById("outpara").innerText="Updated !!";
+            }
+            else
             document.getElementById("outpara").innerText="This title already exists, Please use different title";
         }
     }
@@ -338,7 +355,7 @@ function deleteData(){
         alert("All data deleted!!");
     }
     else{
-        alert("Deletion aborted")
+        alert("Deletion aborted");
     }
 }
 
@@ -349,6 +366,23 @@ function handleClick(){
     popup.classList.toggle("active");
     overlay.classList.toggle("active");
     putVals();
+}
+
+function handleEdit(){
+    let inputval = document.getElementById("keyy2").value;
+    let targetval = document.getElementById("keyy3");
+    let str = inputval;
+    targetval.value = inputval;
+    document.getElementById("inpuEdit").style.visibility="visible";
+
+}
+
+function closePop(){
+    let inputval = document.getElementById("keyy2");
+    let targetval = document.getElementById("keyy3").value;
+    inputval.value = targetval;
+
+    document.getElementById("inpuEdit").style.visibility="hidden";
 }
 
 function closeall(){
@@ -374,7 +408,7 @@ function putVals(){
     let fullstr="";
     for(let i=0; i< localStorage.length; i++){
         let tempkey = localStorage.key(i);
-        fullstr = fullstr.concat(`<li onclick="getVal(this)">${tempkey}</li>`)
+        fullstr = fullstr.concat(`<li onclick="getVal(this)" class="ineerli">${tempkey}</li>`)
     }   
     list.innerHTML=fullstr; 
 }
