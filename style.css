@@ -401,7 +401,7 @@ header{
 }
 
 #content1{
-    background-color: rgb(49, 114, 136);
+    background-color: rgb(29, 75, 90);
     position: absolute;
     min-height: inherit;
     width: 100vw;
@@ -472,14 +472,18 @@ hr{
 	background-color: rgb(255, 117, 117);
 	border-radius: 5px;
 	color: rgb(49, 0, 30);
-    box-shadow: 0px 0px 5px 3px rgb(31, 77, 92);
+    box-shadow: 0px 0px 13px 0px rgb(0, 0, 0);
     margin: 0.5rem 1rem;
 }
 #butt:active{
-    background-color: rgb(255, 187, 187);
+    transform: scale(0.97);
+    background-color: rgb(218, 109, 109);
+    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0);
 }
 #buttReset:active{
-    background-color: rgb(253, 186, 186);
+    background-color: rgb(218, 109, 109);
+    transform: scale(0.97);
+    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0);
 }
 
 #keyy2{
@@ -498,7 +502,7 @@ hr{
 
 .inpuEdit{
     position: fixed;
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.644);
     top: 50%;
@@ -588,11 +592,13 @@ td{
 	background-color: rgb(168, 168, 168);
 	border-radius: 5px;
 	color: rgb(49, 0, 30);
-    box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
     margin: 1rem 0.28rem;
+    box-shadow: 0px 0px 13px 0px rgb(0, 0, 0);
 }
 #addbtn:active{
-	background-color: rgb(228, 228, 228);
+	background-color: rgb(139, 139, 139);
+    transform: scale(0.97);
+    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0);
 }
 .clos{
 	border: none;
@@ -608,6 +614,8 @@ td{
 }
 .clos:active{
 	background-color: rgb(176, 200, 202);
+    transform: scale(0.97);
+    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0);
 }
 
 table{
@@ -675,7 +683,7 @@ td{
     font-weight: bold;
     color: rgb(8, 34, 34);
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
+    box-shadow: 0px 0px 13px 0px rgb(0, 0, 0);
     margin: 0.5rem 0.62rem;
 }
 .indbtndel{
@@ -688,11 +696,13 @@ td{
     font-weight: bold;
     color: rgb(128, 0, 38);
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 3px rgb(17, 48, 58);
+    box-shadow: 0px 0px 13px 0px rgb(0, 0, 0);
     margin: 0.5rem 0.62rem;
 }
-.indbtn:active, indbtndel:active{
-    background-color: rgb(30, 226, 161);
+.indbtn:active, .indbtndel:active{
+    background-color: rgb(27, 146, 106);
+    transform: scale(0.97);
+    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0);
 }
 
 #outpara{
@@ -758,9 +768,9 @@ footer{
     padding: 5px;
     position: absolute;
     z-index: 1;
-    bottom: 100%;
+    bottom: -45%;
     left: 50%;
-    margin-left: -75px;
+    margin-left: -50px;
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -777,7 +787,7 @@ footer{
   }
   
   .content{
-    height: 10.4rem;
+    height: 24rem;
     overflow-y: scroll;
     background-color: rgb(174, 186, 207);
     border-bottom-left-radius: 10px;
@@ -791,7 +801,7 @@ footer{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(56, 56, 56, 0.801);
+    background-color: rgba(31, 31, 31, 0.849);
     opacity: 0.6;
     display: none;
     z-index: 50;
@@ -817,24 +827,24 @@ footer{
 }
 .btnclss{
     color: white;
-    background-color: rgb(0, 53, 151);
+    background-color: rgb(20, 83, 199);
     border: none;
     outline: none;
-    height: 2rem;
-    width: 2rem;
+    height: 2.3rem;
+    width: 2.8rem;
     border-radius: 5px;
-    font-size: 1.2rem;
-    box-shadow: 0px 0px 6px 1px  rgb(0, 15, 44);
+    font-size: 1.8rem;
+    box-shadow: 0px 0px 6px 0px  rgb(0, 15, 44);
 }
 .btnclss:active{
-    box-shadow: 0px 0px 0px 0px  rgb(0, 15, 44);
+    box-shadow: 0px 0px 2px 0px  rgb(0, 15, 44);
     border: 1px solid rgb(0, 15, 44);
 }
 .popup{
     position: fixed;
     top: 50%;
     left: 50%;
-    height: 13rem;
+    height: 27rem;
     width: 20rem;
     display: flex;
     flex-direction: column;
@@ -842,18 +852,19 @@ footer{
     z-index: 999;
     visibility: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0px 0px 10px 2px #000000;
+    box-shadow: 0px 0px 10px -2px #000000;
     transform: scale(0.01);
 }
 .popup.active{
     visibility: visible;
-    transform: translate(-50%,-30%);
+    transform: translate(-50%,-50%);
 }
 ul{
     list-style: none;
   margin: 0;
   padding: 0;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 .ineerli{
     height: 3rem;
@@ -862,12 +873,12 @@ ul{
     align-items: center;
     width: 100%;
     list-style: none;
+    border-bottom: 1px solid black;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
-.ineerli:nth-child(odd){
-    background-color: rgb(122, 168, 253);
-}
-.ineerli:nth-child(even){
-    background-color: rgb(52, 123, 255);
+.ineerli:active{
+    background-color: rgb(133, 140, 151);
 }
 
   
