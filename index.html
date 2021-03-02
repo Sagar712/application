@@ -48,32 +48,24 @@
                      <input type="number" name="key" id="keyy" placeholder="enter key" autocomplete="off"  />
                     </div>
                      <br/>
-                     <label for="keyy2"></label> <input type="text" name="msg" placeholder="enter message" id="keyy2" autocomplete="off"/>
+                     <label for="keyy2"></label> 
+                     
+                     <textarea rows="5"  name="msg" placeholder="enter message..." id="keyy2" autocomplete="off"></textarea>
                      <br/>
                      <div class="buttonset">
-                        <button type="submit" id="butt" onclick="encrypt()">Encrypt</button>
-                        <button id="buttReset" onclick="reset()">Reset</button>
-                        <button type="submit" id="butt" onclick="decrypt()">Decrypt</button>
+                        <button type="submit" id="butt" onclick="encrypt()"><i class="fas fa-lock"></i></button>
+                        <button id="buttReset" onclick="reset()"><i class="fas fa-redo-alt"></i></button>
+                        <button type="submit" id="butt" onclick="decrypt()"><i class="fas fa-lock-open"></i></button>
                      </div>
                      <div class="tooltip">
+                      <button onclick="handleEdit()" id="butt"><i class="fas fa-pen"></i></button> 
                        <span class="tooltiptext" id="myTooltip">Copied !</span>
-                      <button onclick="copyElementText('myTooltip')" id="butt">Copy</button>
-                      <button onclick="handleClick()" id="butt">Select</button>
+                      <button onclick="copyElementText('myTooltip')" id="butt"><i class="fas fa-clone"></i></button>
+                      
+                      <button onclick="handleClick()" id="butt"><i class="fas fa-list-ul"></i></button> 
                      </div>
 
-                     <div class="popup" id="popup">
-                      <div class="titler">
-                        <div class="header">Choose option</div>
-                        <button onclick="closeall()">x</button>
-                    </div>
-                     <div class="content">
-                      <ul id="mainlist">
-                          <li onclick="getVal(this)">Empty!!</li>
-                          
-                      </ul>
                      
-                  </div>
-                </div>
                   <div class="overlay" id="overlay" onclick="closeall()"></div>
                      
                      
@@ -87,6 +79,25 @@
                     
                 </p>
         </div>
+        <div class="popup" id="popup">
+          <div class="titler">
+            <div class="header">Choose Title</div>
+            <button onclick="closeall()" class="btnclss"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="content">
+          <ul id="mainlist">
+              <li onclick="getVal(this)">Empty!!</li>
+              
+          </ul>
+         
+      </div>
+         
+    </div>
+    <div class="inpuEdit" id="inpuEdit">
+      <div class="titleee"><button onclick="closePop()" class="btnclss2"><i class="fas fa-check"></i></button></div>
+      <textarea rows="5"  name="msg" placeholder="enter message..." id="keyy3" autocomplete="off"></textarea>
+    </div>
+        
 
         <div id="content2">
           <span style="font-weight: bold; font-size: 1.3rem; color: white;margin-top: 1rem;">Create List<br/><hr/></span>
@@ -98,9 +109,8 @@
   
               </div>
               <div>
-                <button onclick="storageo()" id="addbtn">Storage</button>
-                <button onclick="resetval()" id="addbtn">Reset</button>
-                <button onclick="addval()" id="addbtn">Add</button>
+                <button onclick="resetval()" id="addbtn"><i class="fas fa-redo-alt"></i></button>
+                <button onclick="addval()" id="addbtn"><i class="fas fa-plus"></i></button>
             </div>
             
 
@@ -116,11 +126,11 @@
           <br/>
           <input type="text" id="dbtitle" placeholder=" Title" autocomplete="off">
           <br/>
-          <input type="text" id="dbvalue" placeholder=" Info you want to store" autocomplete="off">
+          <textarea type="text" id="dbvalue" placeholder=" Info you want to store" autocomplete="off"></textarea>
           <br/>
           <div class="allbtns">
-            <button onclick="inputData()" class="indbtn">Add to storage</button>
-            <button onclick="deleteData()" class="indbtn">Delete all</button>
+            <button onclick="inputData()" class="indbtn"><i class="fas fa-plus"></i> <i class="fas fa-eye"></i></button>
+            <button onclick="deleteData()" class="indbtndel"><i class="fas fa-trash-alt"></i></button>
           </div>
           <br/>
           <span style="color: white;">Storage</span>
@@ -141,11 +151,11 @@
         <i class="fas fa-mask" id="icon1"></i>
       </div>
       <div class="icons" onclick="swipeleft2()">
-        <i class="fas fa-book" id="icon2"></i>
+        <i class="fas fa-calculator" id="icon2"></i>
       </div>
 
       <div class="icons" onclick="swipeleft3()">
-        <i class="fas fa-pen-square" id="icon3"></i>
+        <i class="fas fa-database" id="icon3"></i>
       </div>
     </footer>
 
