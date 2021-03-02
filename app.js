@@ -80,7 +80,9 @@ function reset(){
 function encrypt(){
     let key = document.getElementById("keyy").value;
     let msg = document.getElementById("keyy2").value;
-    if(key!=""){
+    if(key=="")
+        key="7121996";
+
         let encypted="";
 		let looper=0, len = key.length;
         let conv;
@@ -127,16 +129,15 @@ function encrypt(){
             document.getElementById("crypted").innerHTML="Encrypted Message:";
         }
         
-    }	
-    else
-        copyElementText("myTooltip2");
+    
     
 }
 
 function decrypt(){
     let key = document.getElementById("keyy").value;
     let msg = document.getElementById("keyy2").value;
-    if(key!=""){
+    if(key=="")
+    key = "7121996";
 		let encypted="";
 		let j =0, looper=0, len = key.length;
         let exchange=0;
@@ -173,9 +174,7 @@ function decrypt(){
 		console.log("Decrypted: "+encypted);
         document.getElementById("encryted").innerText=encypted;
         document.getElementById("crypted").innerHTML="Decrypted Message:";
-    }
-    else
-        copyElementText("myTooltip2");
+    
 }
 
 let names = [];
@@ -284,7 +283,7 @@ function totalcalc(str){
 function copyElementText(idd) {
     var text = document.getElementById("encryted").innerText;
     var elem = document.createElement("textarea");
-    document.getElementById("dbvalue").innerText = text;
+    document.getElementById("dbvalue").value = text;
     document.body.appendChild(elem);
     elem.value = text;
     elem.select();
