@@ -529,6 +529,7 @@ hr{
     border-radius: 5px;
     box-shadow: 0px 0px 1px 1px rgb(17, 48, 58);
 }
+
 .btnclss2{
     border-radius: 3px;
     border: none;
@@ -859,10 +860,57 @@ footer{
     visibility: visible;
     transform: translate(-50%,-50%);
 }
+
+.popup2{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 12rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    z-index: 999;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px -2px #000000;
+    transform: scale(0.01);
+    overflow: hidden;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popup2.active{
+    visibility: visible;
+    transform: translate(-50%,-50%);
+}
+
+.updt{
+    border: none;
+	outline: none;
+	height: 2.5rem;
+	width: 5rem;
+	font-size: 1rem;
+	font-weight: bold;
+	background-color: rgb(119, 171, 238);
+	border-radius: 5px;
+	color: rgb(0, 0, 0);
+    margin: 1rem 0.28rem;
+    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+}
+.updt:active{
+	background-color: rgb(98, 140, 179);
+    transform: scale(0.97);
+    box-shadow: 0px 0px 8px 0px rgb(0, 0, 0);
+}
+
 ul{
     list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
