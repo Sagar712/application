@@ -10,6 +10,7 @@ if("serviceWorker" in navigator){
 }
 
 
+
 function swipeleft1(){
     document.getElementById("content1").style.transform="translateX(0%)";
     document.getElementById("content2").style.transform="translateX(100%)";
@@ -43,6 +44,8 @@ function swipeleft3(){
 let chngeicn=0;
 const overlay = document.querySelector(".ovelay2");
 let isMenuOpened = false;
+
+let saveTitle="";
 
 function changeicon(){
     chngeicn++;
@@ -122,10 +125,17 @@ function encrypt(){
         */
         
         
-            console.log("Encrypted:"+encypted);
-            document.getElementById("encryted").innerText=encypted;
-            document.getElementById("crypted").innerHTML="Encrypted Message:";
+        console.log("Encrypted:"+encypted);
+        document.getElementById("encryted").innerText=encypted;
+        document.getElementById("crypted").innerHTML="Encrypted Message:";
         
+        if(isMenuOpened){
+            const updatew = document.getElementById("popup2");
+            const overlay = document.getElementById("overlay");
+            updatew.classList.toggle("active");
+            overlay.classList.toggle("active");
+            isMenuOpened=false;
+        }
         
     
     
@@ -398,12 +408,21 @@ function closeall(){
 
 }
 
+function closeall2(){
+    const updatew = document.getElementById("popup2");
+    const overlay = document.getElementById("overlay");
+    updatew.classList.toggle("active");
+    overlay.classList.toggle("active");
+
+}
+
 function getVal(e){
     closeall();
-    let textt = localStorage.getItem(e.textContent)
+    let textt = localStorage.getItem(e.textContent);
     document.getElementById("keyy2").value=textt;
-    console.log(e.textContent);
     isMenuOpened = true;
+    saveTitle = e.textContent;
+    console.log("title name:"+saveTitle);
     decrypt();
     
 }
@@ -417,4 +436,13 @@ function putVals(){
         fullstr = fullstr.concat(`<li onclick="getVal(this)" class="ineerli">${tempkey}</li>`)
     }   
     list.innerHTML=fullstr; 
+    
+}
+
+function updateData(){
+    closeall2();
+    let replacer = document.getElementById("encryted").innerText;
+    console.log(saveTitle+" -> "+replacer);
+    if(saveTitle!="")
+    localStorage.setItem(saveTitle, replacer);
 }
