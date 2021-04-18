@@ -18,3 +18,20 @@ self.addEventListener("fetch", e => {
     );
 
 });
+
+self.addEventListener('activate', function(event) {
+
+    var cacheAllowlist = ['secretscript_v1'];
+  
+    event.waitUntil(
+      caches.keys().then(function(cacheNames) {
+        return Promise.all(
+          cacheNames.map(function(cacheName) {
+            if (cacheAllowlist.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    );
+  });
