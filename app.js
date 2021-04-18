@@ -14,9 +14,11 @@ function swipeleft1(){
     document.getElementById("content1").style.transform="translateX(0%)";
     document.getElementById("content2").style.transform="translateX(100%)";
     document.getElementById("content3").style.transform="translateX(200%)";
-    document.getElementById("icon1").style.color="#fff";
-    document.getElementById("icon2").style.color="rgb(151, 202, 209)";
-    document.getElementById("icon3").style.color="rgb(151, 202, 209)";
+    document.querySelectorAll("#icon1")[0].style.color="rgb(65, 47, 0)";
+    document.querySelectorAll("#icon1")[1].style.color="rgb(65, 47, 0)";
+    document.querySelectorAll("#icon2")[0].style.color="rgb(148, 108, 0)";
+    document.querySelectorAll("#icon2")[1].style.color="rgb(148, 108, 0)";
+    document.getElementById("icon3").style.color="rgb(148, 108, 0)";
     document.getElementById("allcont").scrollTop=0;
 }
 
@@ -24,9 +26,11 @@ function swipeleft2(){
     document.getElementById("content1").style.transform="translateX(-100%)";
     document.getElementById("content2").style.transform="translateX(0%)";
     document.getElementById("content3").style.transform="translateX(100%)";
-    document.getElementById("icon2").style.color="#fff";
-    document.getElementById("icon1").style.color="rgb(151, 202, 209)";
-    document.getElementById("icon3").style.color="rgb(151, 202, 209)";
+    document.querySelectorAll("#icon2")[0].style.color="rgb(65, 47, 0)";
+    document.querySelectorAll("#icon2")[1].style.color="rgb(65, 47, 0)";
+    document.querySelectorAll("#icon1")[0].style.color="rgb(148, 108, 0)";
+    document.querySelectorAll("#icon1")[1].style.color="rgb(148, 108, 0)";
+    document.getElementById("icon3").style.color="rgb(148, 108, 0)";
     document.getElementById("allcont").scrollTop=0;
 }
 
@@ -34,15 +38,19 @@ function swipeleft3(){
     document.getElementById("content1").style.transform="translateX(-200%)";
     document.getElementById("content2").style.transform="translateX(-100%)";
     document.getElementById("content3").style.transform="translateX(0%)";
-    document.getElementById("icon3").style.color="#fff";
-    document.getElementById("icon2").style.color="rgb(151, 202, 209)";
-    document.getElementById("icon1").style.color="rgb(151, 202, 209)";
+    document.getElementById("icon3").style.color="rgb(65, 47, 0)";
+    document.querySelectorAll("#icon2")[0].style.color="rgb(148, 108, 0)";
+    document.querySelectorAll("#icon2")[1].style.color="rgb(148, 108, 0)";
+    document.querySelectorAll("#icon1")[0].style.color="rgb(148, 108, 0)";
+    document.querySelectorAll("#icon1")[1].style.color="rgb(148, 108, 0)";
     document.getElementById("allcont").scrollTop=0;
 }
 
 let chngeicn=0;
 const overlay = document.querySelector(".ovelay2");
 let isMenuOpened = false;
+
+let saveTitle="";
 
 function changeicon(){
     chngeicn++;
@@ -77,57 +85,44 @@ function reset(){
     console.log("Reset clicked");
 }
 
-function encrypt(){
-    let key = document.getElementById("keyy").value;
-    let msg = document.getElementById("keyy2").value;
+function encrypt(key, msg){
+    
     if(key=="")
         key="7121996";
 
-        let encypted="";
-		let looper=0, len = key.length;
-        let conv;
-        let exchange=0;
-        let firstspace = true;
-        let series = [" ","!","'","#","$","%","&","\"","(",")","*","+",",","-",".","/",
+    let encypted="";
+	let looper=0, len = key.length;
+    let conv;
+    let exchange=0;
+    let firstspace = true;
+    let series = [" ","!","'","#","$","%","&","\"","(",")","*","+",",","-",".","/",
         "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@",
         "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
         "[","\\","]","^","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u",
         "v","w","x","y","z","{","|","}","~"];
 
-        for(let i=0; i<msg.length; i++){
-            let j=parseInt(key.charAt(looper));
-            for(let k=0; k<series.length; k++){
-                if(series[k]===msg.charAt(i)){
-                    exchange=k;
-                    break;
-                }
+    for(let i=0; i<msg.length; i++){
+        let j=parseInt(key.charAt(looper));
+        for(let k=0; k<series.length; k++){
+            if(series[k]===msg.charAt(i)){
+                exchange=k;
+                break;
             }
-            if(msg.charAt(i)=="\n"){
-                encypted = encypted.concat("\n");
-                continue;
-            }
+        }
+        if(msg.charAt(i)=="\n"){
+            encypted = encypted.concat("\n");
+            continue;
+        }
                 
-            conv = series[(exchange+j)%95];
-            if(conv ==" "){
-                conv="©";
-            }
-            encypted = encypted.concat(conv);
-            looper = (looper+1)%len;
+        conv = series[(exchange+j)%95];
+        if(conv ==" "){
+            conv="©";
         }
-        /*
-        if(firstspace==true){
-            document.getElementById("crypted").innerHTML=`Please change ${looper+1}'th digit to avoid SPACE error <br/>This occurs when encrypted code is having first or last letter as a SPACE`;
-            document.getElementById("encryted").innerHTML="! Warning !<br/>SPACE at the beginning or at the end";
-        }
-        */
-        
-        
-            console.log("Encrypted:"+encypted);
-            document.getElementById("encryted").innerText=encypted;
-            document.getElementById("crypted").innerHTML="Encrypted Message:";
-        
-        
+        encypted = encypted.concat(conv);
+        looper = (looper+1)%len;
+    }
     
+    return encypted;
     
 }
 
@@ -210,7 +205,7 @@ function addval(){
 
 }
 
-
+//rgb(148, 108, 0)
 
 function handler(id){
 	console.log("X clicked:"+id);
@@ -307,42 +302,55 @@ function copyElementText(idd) {
 }
 
 function inputData(){
-	let fullstr="";
-	let inpu = document.getElementById("dbtitle").value;
-    let info = document.getElementById("dbvalue").value;
-	let isPrsesent = false;
-    if(inpu!=""){
-        for(let i=0; i<localStorage.length; i++){
-            if(localStorage.key(i)==inpu)
-                isPrsesent=true;
-        }
+	
+    let titleIs = document.getElementById("title").value;
+    let keyIs = document.getElementById("key").value;
+    let descriptionIs = document.getElementById("description2").value;
+    let encrypted = encrypt(keyIs, descriptionIs);
+    let statusIs = "Unique Key";
     
-        if(!isPrsesent){
-            localStorage.setItem(inpu, info);
-            fullstr = localStorage.getItem(inpu);
-            document.getElementById("outpara").innerText='Added!! "'+inpu+'"\n\n'+"Please refresh and press Add storage to see all data";
+    if(keyIs.match("7121996") !== null || keyIs == ""){
+        statusIs = "Default key";
+    }
+    
+    if(localStorage.getItem("ScriptAppData")!=null){
+       
+        let obj = JSON.parse(localStorage.getItem("ScriptAppData"));
+        let i =1;
+        while(obj.tasks[i]!=null){
+            i++;
         }
-        else{
-            if(confirm("Do u want to update content of existing title?")){
-                localStorage.setItem(inpu, info);
-                fullstr = localStorage.getItem(inpu);
-                document.getElementById("outpara").innerText="Updated !!";
-            }
-            else
-            document.getElementById("outpara").innerText="This title already exists, Please use different title";
+        obj.tasks[i]={
+            title: titleIs,
+            status: statusIs,
+            description: encrypted
         }
+
+        let db = JSON.stringify(obj);
+        localStorage.setItem("ScriptAppData", db);
+        
     }
     else{
-        fullstr="";
-        for(let i=0; i< localStorage.length; i++){
-            let tempkey = localStorage.key(i);
-            let strr = localStorage.getItem(tempkey);
-            fullstr = fullstr.concat("("+(i+1)+") "+tempkey+"\n------------------>\n"
-            +strr+"\n--------------------------------------------------------------------\n");
+        let masterDb = {
+            tasks:{
+                1:{
+                    title: titleIs,
+                    status: statusIs,
+                    description: encrypted
+                }
+            }
         }
-        document.getElementById("outpara").innerText=fullstr;
+
+        let db = JSON.stringify(masterDb);
+        localStorage.setItem("ScriptAppData", db);
+        
     }
-    
+    document.getElementById("title").textContent = "";
+    document.getElementById("key").textContent = "";
+    document.getElementById("description2").textContent = "";
+    togglePopup('popupTask');
+    renderer("ScriptAppData", ".AllTasks");
+
 }
 
 function deleteData(){
@@ -398,12 +406,21 @@ function closeall(){
 
 }
 
+function closeall2(){
+    const updatew = document.getElementById("popup2");
+    const overlay = document.getElementById("overlay");
+    updatew.classList.toggle("active");
+    overlay.classList.toggle("active");
+
+}
+
 function getVal(e){
     closeall();
-    let textt = localStorage.getItem(e.textContent)
+    let textt = localStorage.getItem(e.textContent);
     document.getElementById("keyy2").value=textt;
-    console.log(e.textContent);
     isMenuOpened = true;
+    saveTitle = e.textContent;
+    console.log("title name:"+saveTitle);
     decrypt();
     
 }
@@ -417,4 +434,73 @@ function putVals(){
         fullstr = fullstr.concat(`<li onclick="getVal(this)" class="ineerli">${tempkey}</li>`)
     }   
     list.innerHTML=fullstr; 
+    
 }
+
+function updateData(){
+    closeall2();
+    let replacer = document.getElementById("encryted").innerText;
+    console.log(saveTitle+" -> "+replacer);
+    if(saveTitle!="")
+    localStorage.setItem(saveTitle, replacer);
+}
+
+function togglePopup(classOfPopup) {
+
+    let popup = document.querySelector(`.${classOfPopup}`);
+    let overlay = document.querySelector(".overlay");
+
+    popup.classList.toggle("active");
+    overlay.classList.toggle("active");
+}
+
+
+function indexAllocTask(index) {
+    localStorage.setItem("indexof", index.toString());
+    
+    location.href = "./output.html";
+}
+
+function renderer(key, classId) {
+    if(localStorage.getItem(key)!=null){
+        let obj = JSON.parse(localStorage.getItem(key));
+        let i =1;
+        let str = "";
+        let clasTitle =  document.querySelector(classId);
+        while(obj.tasks[i]!=null){
+            let status1 = obj.tasks[i].status;
+            let current_status;
+            let color;
+            let newDiv;
+            if(status1 == "Default key"){
+                current_status = 'fas fa-unlock-alt';
+                color = 'yellow';
+            }
+                
+            else{
+                current_status = 'fas fa-lock';
+                color = 'rgb(59, 255, 124)';
+            }
+
+            
+                newDiv= `<div class='sample'>
+                            <div class="status">
+                                <i style="color: ${color}; border: 2px solid ${color};" id="statusIcon" class="${current_status}" onclick="completeTask(${i})"></i>
+                            </div>
+                            <div class="contentContainer" onclick="indexAllocTask(${i})">
+                                <h2>${obj.tasks[i].title}</h2>
+                            </div>
+                        </div>`;
+            let temp = newDiv;
+            temp = temp+str;
+            str = temp;
+            i++;
+            
+
+        }
+        if(str!="")
+            clasTitle.innerHTML = str;
+    }
+}
+
+renderer("ScriptAppData", ".AllTasks");

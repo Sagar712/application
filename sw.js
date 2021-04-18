@@ -1,7 +1,9 @@
 self.addEventListener("install", e => {
     e.waitUntil(
-        caches.open("static").then(cache => {
-            return cache.addAll(["./", "./app.js", "./style.css", "./mask294.png"]);
+        caches.open("secretscript_v1").then(cache => {
+            return cache.addAll(["./", "./app.js", "./style.css", "./mask294.png",
+             "./contact.html", "./howto.html", "./otherstyle.css",
+              "./output.html", "./output.js"]);
         })
     );
 });
