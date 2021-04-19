@@ -511,6 +511,17 @@ footer{
     background-color: rgb(128, 30, 30);
 }
 
+.containsinputs{
+    width: 100vw;
+    background-color: rgb(44, 44, 44);
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .clos{
     height: 100%;
     width: 90%;
@@ -677,9 +688,7 @@ footer{
 
     .inputKey{
         width: 100%;
-        position: sticky;
-        top: 0;
-        left: 0;
+        
     }
     .inputKey input{
         min-width: 4rem;
