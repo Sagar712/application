@@ -117,7 +117,9 @@ function saveItem() {
     allItems.tasks[currentIndex].description = newDes;
     console.log(allItems);
     localStorage.setItem("ScriptAppData", JSON.stringify(allItems));
-    location.reload();
+    document.querySelector(".addbutnn").innerHTML = "";
+    document.querySelector(".decryptedMsg").innerHTML = '<p id="msgdecrypt"></p>';
+    fetchDecryption();
 }
 
 function delElement() {
