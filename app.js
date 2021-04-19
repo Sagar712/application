@@ -309,7 +309,7 @@ function handler(id){
 
 function deleteList() {
     if(confirm("You are about to delete complete list\n Are you sure?")){
-        localStorage.clear("ListTableData");
+        localStorage.removeItem("ListTableData");
     }
     else{
         alert("Deletion aborted !");
