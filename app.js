@@ -1,13 +1,3 @@
-if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("sw.js").then(
-        registration => {
-            console.log("SW registered");
-            console.log(registration);
-        }
-    ).catch(error => {
-        console.log("SW failed");
-    })
-}
 
 
 function swipeleft1(){
@@ -51,6 +41,29 @@ const overlay = document.querySelector(".ovelay2");
 let isMenuOpened = false;
 
 let saveTitle="";
+
+let num1 = 0;
+function popupmenu() {
+    let rotater = document.querySelector(".menubtn-bar");
+    let cross = document.querySelector(".bar");
+    let menu = document.querySelector(".menuitems");
+    let overlay = document.querySelector(".nextoverlay");
+    let icon = document.getElementById('changeclas');
+
+    cross.classList.toggle("active");
+    menu.classList.toggle("active");
+    overlay.classList.toggle("active");
+    rotater.classList.toggle("active");
+    if(num1==0){
+        icon.className='fas fa-times';
+        num1=1;
+    }
+    else if(num1==1){
+        icon.className='fas fa-bars';
+        num1=0;
+    }
+    
+}
 
 function changeicon(){
     chngeicn++;
@@ -174,99 +187,157 @@ function decrypt(){
     
 }
 
-let names = [];
-let quants = [];
-let prices = [];
-let i=0;
+
 let celldata = document.getElementById("allcell");
 
 function addval(){
+
+    let names = [];
+    let quants = [];
+    let prices = [];
 	console.log("clicked");
-	let str=`<tr>
-	<th>Sr</th>
-	<th>Name</th>
-	<th>Quatity</th>
-	<th>Prices </th>
-	<th>Remv</th>
-</tr>`;
+	let str=`
+    <tr>
+    	<th>Sr</th>
+	    <th>Name</th>
+	    <th>Quatity</th>
+	    <th>Prices </th>
+	    <th>Remv</th>
+    </tr>`;
 	let name = document.getElementById("name").value;
 	let quant = document.getElementById("quant").value;
 	let price = document.getElementById("price").value;
 	
-	names[i] = name;
-	quants[i] = quant;
-	prices[i++] = price;
+	
 
-	let lop=0;
-	for(let j=0; j<names.length; j++){
-		str += `<tr><td>${j+1}</td><td>${names[j]}</td><td>${quants[j]}</td><td>${prices[j]}</td><td><button onclick = "handler(this.id)"class="clos" id="${j+1}">X</button></td></tr>`;
+    if(localStorage.getItem("ListTableData") == null){
+        const masterdb = {
+            items : {
+                
+            }
+        }
+        localStorage.setItem("ListTableData", JSON.stringify(masterdb));
+    }
+    
+    let masterDb = JSON.parse(localStorage.getItem("ListTableData"));
+    let j =1;
+    let i=0;
+    
+    
+    while(masterDb.items[j]!=null){
+        j++;
+    }
+
+    masterDb.items[j] = {
+        name:name,
+        quant:quant,
+        price:price
+    }
+    j=1;
+    while(masterDb.items[j]!=null){
+        names[i] = masterDb.items[j].name;
+	    quants[i] = masterDb.items[j].quant;
+	    prices[i++] = masterDb.items[j].price;
+        j++;
+    }
+    console.log(masterDb);
+    console.log(j);
+    localStorage.setItem("ListTableData", JSON.stringify(masterDb));
+    
+
+    let newDb = JSON.parse(localStorage.getItem("ListTableData"));
+	
+	for(let k=1; k<j; k++){
+		str += `<tr><td>${k}</td><td>${newDb.items[k].name}</td>
+        <td>${newDb.items[k].quant}</td><td>${newDb.items[k].price}</td>
+        <td><button onclick = "handler(this.id)"class="clos" id="${k}">X</button></td></tr>`;
 	}
-	celldata.innerHTML = totalcalc(str);
-
+	celldata.innerHTML = totalcalc(str, names, quants, prices);
+    resetval();
 }
 
-//rgb(148, 108, 0)
-
 function handler(id){
-	console.log("X clicked:"+id);
-	let str=`<tr>
-	<th>Sr</th>
-	<th>Name</th>
-	<th>Quatity</th>
-	<th>Prices </th>
-	<th>Remv</th>
-</tr>`;
-	let tempname =[];
-	let tempquant =[];
-	let tempprice =[];
-	let x=0;
-	for(let j=0; j<names.length; j++){
-		if(j==(id-1)){
-			i--;
-		}
-		else{
-			tempname[x] = names[j];
-			tempquant[x] = quants[j];
-			tempprice[x++] =prices[j];
-			if(x>=names.length)
-				break;
-		}	
-		
-	}
-	names=tempname;
-	quants=tempquant;
-	prices=tempprice;
-	console.log(names)
-	for(let j=0; j<names.length; j++){
-		str += `<tr><td>${j+1}</td><td>${names[j]}</td><td>${quants[j]}</td><td>${prices[j]}</td><td><button onclick = "handler(this.id)"class="clos" id="${j+1}">X</button></td></tr>`;
-	}
+
+    let names = [];
+    let quants = [];
+    let prices = [];
+	let str=`
+    <tr>
+    	<th>Sr</th>
+	    <th>Name</th>
+	    <th>Quatity</th>
+	    <th>Prices </th>
+	    <th>Remv</th>
+    </tr>`;
 	
-	celldata.innerHTML = totalcalc(str);
+    let masterDb = JSON.parse(localStorage.getItem("ListTableData"));
+    let j =1;
+    let i=0;
+    let cp = 1;
+
+    let copyDb = {
+        items : {
+            
+        }
+    }
+
+    while(masterDb.items[j]!=null){
+        if(j == id){
+            j++;
+            continue;
+        }
+        names[i] = masterDb.items[j].name;
+	    quants[i] = masterDb.items[j].quant;
+	    prices[i++] = masterDb.items[j].price;
+        copyDb.items[cp++] = masterDb.items[j];
+        j++;
+    }
+    localStorage.setItem("ListTableData", JSON.stringify(copyDb));
+    
+
+    let newDb = JSON.parse(localStorage.getItem("ListTableData"));
+    console.log(newDb);
+	j=j-1;
+	for(let k=1; k<j; k++){
+		str += `<tr><td>${k}</td><td>${newDb.items[k].name}</td>
+        <td>${newDb.items[k].quant}</td><td>${newDb.items[k].price}</td>
+        <td><button onclick = "handler(this.id)"class="clos" id="${k}">X</button></td></tr>`;
+	}
+    celldata.innerHTML = totalcalc(str, names, quants, prices);
+    resetval();
+}
+
+function deleteList() {
+    if(confirm("You are about to delete complete list\n Are you sure?")){
+        localStorage.clear("ListTableData");
+    }
+    else{
+        alert("Deletion aborted !");
+    }
+    listRendrer();
 }
 
 function resetval(){
-
 	document.getElementById("name").value="";
 	document.getElementById("quant").value="";
 	document.getElementById("price").value="";
-
-	
 }
 
-function totalcalc(str){
-	let tot = document.getElementById("totals");
+function totalcalc(str, names, quants, prices){
 	let total=0;
 	let j;
-	console.log("quant: "+quants+", prices: "+prices);
 	for(j=0; j<names.length; j++){
 
-		if(quants[j]==""){
+        if(prices[j]=="" && quants[j]==""){
+            total+=0;
+        }
+		else if(quants[j]==""){
 			total += parseInt(prices[j]) ;
-		}
-			
+		}	
 		else if(prices[j]=="")
 			total += parseInt(quants[j]);
-		else if(prices[j]=="" && quants[j]=="");
+		
+            
 		else
 		total += quants[j]*prices[j];
 	}
@@ -389,61 +460,6 @@ function handleEdit(){
 
 }
 
-function closePop(){
-    let inputval = document.getElementById("keyy2");
-    let targetval = document.getElementById("keyy3").value;
-    inputval.value = targetval;
-
-    document.getElementById("inpuEdit").style.visibility="hidden";
-}
-
-function closeall(){
-    const popup = document.getElementById("popup");
-    const overlay = document.getElementById("overlay");
-    console.log("clicked");
-    popup.classList.toggle("active");
-    overlay.classList.toggle("active");
-
-}
-
-function closeall2(){
-    const updatew = document.getElementById("popup2");
-    const overlay = document.getElementById("overlay");
-    updatew.classList.toggle("active");
-    overlay.classList.toggle("active");
-
-}
-
-function getVal(e){
-    closeall();
-    let textt = localStorage.getItem(e.textContent);
-    document.getElementById("keyy2").value=textt;
-    isMenuOpened = true;
-    saveTitle = e.textContent;
-    console.log("title name:"+saveTitle);
-    decrypt();
-    
-}
-
-function putVals(){
-    list = document.getElementById("mainlist");
-
-    let fullstr="";
-    for(let i=0; i< localStorage.length; i++){
-        let tempkey = localStorage.key(i);
-        fullstr = fullstr.concat(`<li onclick="getVal(this)" class="ineerli">${tempkey}</li>`)
-    }   
-    list.innerHTML=fullstr; 
-    
-}
-
-function updateData(){
-    closeall2();
-    let replacer = document.getElementById("encryted").innerText;
-    console.log(saveTitle+" -> "+replacer);
-    if(saveTitle!="")
-    localStorage.setItem(saveTitle, replacer);
-}
 
 function togglePopup(classOfPopup) {
 
@@ -460,6 +476,49 @@ function indexAllocTask(index) {
     
     location.href = "./output.html";
 }
+
+function listRendrer() {
+    let names = [];
+    let quants = [];
+    let prices = [];
+	console.log("clicked");
+	let str=`
+    <tr>
+    	<th>Sr</th>
+	    <th>Name</th>
+	    <th>Quatity</th>
+	    <th>Prices </th>
+	    <th>Remv</th>
+    </tr>`;
+	
+    if(localStorage.getItem("ListTableData") == null){
+        celldata.innerHTML = "";
+        return;
+    }
+    
+    let masterDb = JSON.parse(localStorage.getItem("ListTableData"));
+    let j =1;
+    let i=0;
+    while(masterDb.items[j]!=null){
+        names[i] = masterDb.items[j].name;
+	    quants[i] = masterDb.items[j].quant;
+	    prices[i++] = masterDb.items[j].price;
+        j++;
+    }
+    
+
+    let newDb = JSON.parse(localStorage.getItem("ListTableData"));
+	
+	for(let k=1; k<j; k++){
+		str += `<tr><td>${k}</td><td>${newDb.items[k].name}</td>
+        <td>${newDb.items[k].quant}</td><td>${newDb.items[k].price}</td>
+        <td><button onclick = "handler(this.id)"class="clos" id="${k}">X</button></td></tr>`;
+	}
+	celldata.innerHTML = totalcalc(str, names, quants, prices);
+    resetval();
+}
+
+listRendrer();
 
 function renderer(key, classId) {
     if(localStorage.getItem(key)!=null){

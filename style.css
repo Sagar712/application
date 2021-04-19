@@ -30,6 +30,9 @@ header{
     z-index: 980;
     overflow: hidden;
 }
+.bar{
+    display: none;
+}
 
 .logo{
     margin-left: 5rem;
@@ -37,7 +40,7 @@ header{
     font-weight: bold;
 }
 
-.menuitems{
+.menuitems2{
     display: flex;
     height: 100%;
     width: 25rem;
@@ -133,6 +136,68 @@ header{
     text-align: center;
     transition: 0.2s all ease;
 }
+
+#name{
+    width: 10rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+#quant, #price{
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    margin-left: 0.4rem;
+}
+
+#addbtn{
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem 1rem 0 1rem;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+table{
+    margin-top: 1rem;
+    min-width: 50vw;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th{
+    background-color: rgb(56, 56, 56);
+    height: 2rem;
+    color: white;
+}
+
+tr{
+    height: 1.7rem;
+    background-color: rgb(175, 175, 175);
+    border-bottom: 1px solid black;
+    color: black;
+}
+tr:nth-child(even){
+    background-color: rgb(221, 221, 221);
+    color: black;
+}
+
+tr:nth-last-child(1){
+    background-color: rgb(56, 56, 56);
+    height: 2rem;
+    color: white;
+}
+
 
 #content3{
     position: absolute;
@@ -446,13 +511,113 @@ footer{
     background-color: rgb(128, 30, 30);
 }
 
+.clos{
+    height: 100%;
+    width: 90%;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.menuitems{
+    display: none;
+    
+}
 
 @media screen and (max-width:930px)  {
     .logo{
         margin-left: 1rem;
     }
-    .menuitems{
+    .menuitems2{
         display: none;
+    }
+    .menuitems{
+        
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(145, 87, 0);
+        top:3.5rem;
+        left:100vw;
+        
+        height: fit-content;
+        width: 12rem;
+        border-bottom-left-radius: 10px;
+        transition: 0.2s ease;
+        visibility: hidden;
+        z-index: 980;
+    }
+    .menuitems.active{
+       
+        visibility: visible;
+        transform: translateX(-100%);
+        transition: 0.2s ease;
+    }
+    .menuitems button{
+        height: 2.5rem;
+        width: 85%;
+        margin-top: 0.9rem;
+        background-color: inherit;
+        color: white;
+        border: 2.5px solid white;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.25rem;
+        font-weight: bold;
+        user-select: none;
+        
+    }
+    .menuitems button:nth-last-child(1){
+        margin-bottom: 0.9rem;
+    }
+    .menuitems button:active{
+        background-color: rgb(114, 68, 0);
+    }
+
+    .nextoverlay{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 970;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.2s all ease;
+    }
+    .nextoverlay.active{
+        visibility: visible;
+        opacity: 0.75;
+        transition: 0.2s all ease;
+    }
+
+    .bar{
+        display: block;
+    }
+    .menubtn-bar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        border: 0px solid black;
+        border-radius: 50%;
+        color: inherit;
+        background-color: inherit;
+        height: 3rem;
+        width: 3rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        margin-right: 1rem;
+        transform: rotate(0deg);
+        transition: all 0.3s ease;
+        
+    }
+    .menubtn-bar.active{
+        transform: rotate(90deg);
+        transition: all 0.3s ease;
+        
     }
 
     .popupTask, .editTask{
@@ -495,6 +660,10 @@ footer{
         font-weight: bold;
         font-size: 1.1rem;
         overflow: hidden;
+    }
+
+    table{
+        width: 95%;
     }
 
     .decryptedMsg{

@@ -7,7 +7,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0,  minimum-scale=1, maximum-scale=1"
     />
-	<link rel="manifest" href="./manifest.json">
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
@@ -23,7 +22,7 @@
 	<header>
 		<div class="logo"><i class="fas fa-mask"></i> Script <sub style="font-size: 0.7rem;font-style: italic;"> by Sagar</sub></div>
 
-		<div class="menuitems">
+		<div class="menuitems2">
 			<div class="icons" onclick="swipeleft1()">
 				<i class="fas fa-mask" id="icon1"></i>
 			</div>
@@ -37,12 +36,18 @@
 			</div>
 		</div>
 
-		<div class="seeting" onclick="changeicon()">
-		  <i class="fas fa-bars" id="changeiconq"></i>
-		</div>
+		<div class="bar" onclick="popupmenu()">
+            <button class="menubtn-bar">
+                <i id="changeclas" class="fas fa-bars" style="font-size: 1.3rem;"></i>
+            </button>
+        </div>
 	</header>
 
-	
+	<div class="menuitems">
+        <button class="btnn" onclick="window.location = './backup.html'">Backup</button>
+        <button class="btnn" onclick="window.location = './contact.html'">Other</button>
+    </div>
+	<div class="nextoverlay" onclick="popupmenu()"></div>
 
 	<div class="allContent" id="allcont">
 		
@@ -57,7 +62,35 @@
 
 
 		<div id="content2">
-			<h1>2</h1>
+			
+        <br />
+        <div class="inp">
+          <input type="text" placeholder=" List item name" autocomplete="off" id="name" />
+          <input
+            type="number"
+            placeholder=" Quantity"
+            autocomplete="off"
+            id="quant"
+          />
+          <input
+            type="number"
+            placeholder=" Price"
+            autocomplete="off"
+            id="price"
+          />
+        </div>
+        <div>
+			<button onclick="addval()" id="addbtn">
+				<i class="fas fa-plus"></i>
+			  </button>
+          <button onclick="deleteList()" id="addbtn">
+            <i class="far fa-trash-alt" style="color: brown;"></i>
+          </button>
+        </div>
+
+        <table id="allcell"></table>
+		
+        <div id="totals"></div>
 		</div>
 
 

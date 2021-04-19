@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon/favicon6.png" type="image/x-icon">
+    <link rel="stylesheet" href="./backstyle.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+
+    <title>secret (Back-Up)</title>
+</head>
+<body>
+    <header>
+		<div class="logo"><i class="fas fa-mask"></i> Script <sub style="font-size: 0.7rem;font-style: italic;"> by Sagar</sub></div>
+
+		<div class="menuitems2">
+			<div class="icons" onclick="swipeleft1()">
+				<i class="fas fa-mask" id="icon1"></i>
+			</div>
+
+			<div class="icons" onclick="swipeleft2()" style="color:rgb(148, 108, 0);">
+				<i class="fas fa-calculator" id="icon2"></i>
+			</div>
+		
+			<div class="icons" onclick="swipeleft3()" style="color:rgb(148, 108, 0);">
+				<i class="fas fa-cog" id="icon3"></i>
+			</div>
+		</div>
+
+		<div class="bar" onclick="popupmenu()">
+            <button class="menubtn-bar">
+                <i id="changeclas" class="fas fa-bars" style="font-size: 1.3rem;"></i>
+            </button>
+        </div>
+	</header>
+
+	<div class="menuitems">
+        <button class="btnn" onclick="window.location = './'">Home</button>
+        <button class="btnn" onclick="window.location = './contact.html'">Other</button>
+    </div>
+	<div class="nextoverlay" onclick="popupmenu()"></div>
+
+
+    <div class="giantcontainer">
+        <div class="leftcontainer">
+            <div class="backupbtns">
+                <i class="fas fa-cloud-upload-alt" 
+                style="
+                color: rgb(255, 217, 0);
+                font-size: 4rem;
+                margin-bottom: 2rem;
+                "></i>
+                <div class="backInfo">
+                    <p>
+                        By backing up things, you can get it back anytime, on any device you want. 
+                        All you need to to is to give correct email id. And don't worry your data is secure and at right place. 
+                    </p>
+                </div>
+        
+                <button onclick="Openwindow('setuname')">Take Back-Up</button>
+        
+            </div>
+        </div>
+        
+        <div class="rightcontainer">
+            <div class="importbtns">
+                <i class="fas fa-cloud-download-alt"></i>
+                <div class="importInfo">
+                    <p>
+                        Get back your data by providing same eamil or phone number with which you have backed up all things.
+                        Don't worry your data is secure and at right place. 
+                    </p>
+                </div>
+        
+                <button onclick="Openwindow('getuname')">Download Back-up</button>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="setuname">
+        <span class="closebutn" onclick="Openwindow('setuname')"> <i class="fas fa-times"></i> </span>
+        <p style="font-size:1.1rem; margin-bottom: 3rem;">
+            Give email/phone no. for <span style="color: rgb(136, 255, 136);">UPLOADING:</span> 
+        </p>
+        <input type="text" placeholder="Enter phoneno or email" id="uname">
+        <br>
+        <button onclick="uploadBackUp()">Upload</button>
+    </div>
+    <div class="overlayforclose"></div>
+
+    <div class="getuname">
+        <span class="closebutn" onclick="Openwindow('getuname')"> <i class="fas fa-times"></i> </span>
+        <p style="font-size:1.1rem; margin-bottom: 3rem;">
+            Give email/phone no. for <span style="color: rgb(136, 255, 136);">DOWNLOADING:</span>
+        </p>
+        <input type="text" placeholder="Enter phoneno or email" id="uname2">
+        <br>
+        <button onclick="downBackUp()">Download</button>
+    </div>
+
+
+    <script src="./backup.js"></script>
+    
+</body>
+</html>
