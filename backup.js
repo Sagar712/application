@@ -1,8 +1,4 @@
 
-
-
-
-
 function addTask() {
     location.href = '.';
 }
@@ -44,9 +40,32 @@ function Openwindow(divname) {
 }
 
 function uploadBackUp() {
-    let originalDb = localStorage.getItem("596853");
-    let completeDb = localStorage.getItem("596853Complete");
+    if(localStorage.getItem("ScriptAppData")==null){
+        const masterDb = {
+            tasks:{
+                
+            }
+        }
+
+        let db = JSON.stringify(masterDb);
+        localStorage.setItem("ScriptAppData", db);
+    }
+    if(localStorage.getItem("ListTableData")==null){
+        const masterdb = {
+            items : {
+                
+            }
+        }
+
+        let db = JSON.stringify(masterdb);
+        localStorage.setItem("ListTableData", db);
+    }
+
+    let originalDb = localStorage.getItem("ListTableData");
+    let completeDb = localStorage.getItem("ScriptAppData");
     spinner.classList.add("active");
+
+    
 
     let name = originalDb;
     let email1 =  document.getElementById("uname").value;
@@ -58,30 +77,32 @@ function uploadBackUp() {
         password: pass
     };
 
+    console.log(data);
+
     if(email1!=""){
         fetch(AppUrl,{method:'post', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
-    .then(res => {
-        return res.json();
-    })
-    .then(response => {
+        .then(res => {
+            return res.json();
+        })
+        .then(response => {
         
-        console.log(response);
-        if(response.msg == "user alreay exists!!"){
-            fetch(AppUrl+email1,{method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
-            .then(res => {
-                return res.json();
-            })
-            .then(response => {
+            console.log(response);
+            if(response.msg == "user alreay exists!!"){
+                fetch(AppUrl+email1,{method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+                .then(res => {
+                    return res.json();
+                })
+                .then(response => {
+                    alert(response.msg);
+                    console.log(response);
+                })
+            }
+            else{
                 alert(response.msg);
                 console.log(response);
-            })
-        }
-        else{
-            alert(response.msg);
-            console.log(response);
-        }
-        spinner.classList.remove("active");
-    });
+            }
+            spinner.classList.remove("active");
+        });
     }
     else{
         spinner.classList.remove("active");
@@ -109,65 +130,67 @@ function downBackUp() {
         
         downloadedOriginal = JSON.parse(response.username);
         downloadedCompleted = JSON.parse(response.password);
-        console.log(downloadedOriginal);
-        if(localStorage.getItem("596853")==null){
-            let masterDb = {
+        
+        if(localStorage.getItem("ScriptAppData")==null){
+            const masterDb = {
                 tasks:{
                     
                 }
             }
     
             let db = JSON.stringify(masterDb);
-            localStorage.setItem("596853", db);
+            localStorage.setItem("ScriptAppData", db);
         }
-        if(localStorage.getItem("596853Complete")==null){
-            let masterDb = {
-                tasks:{
+        if(localStorage.getItem("ListTableData")==null){
+            const masterdb = {
+                items : {
                     
                 }
             }
     
-            let db = JSON.stringify(masterDb);
-            localStorage.setItem("596853Complete", db);
+            let db = JSON.stringify(masterdb);
+            localStorage.setItem("ListTableData", db);
         }
-        let originalDb = JSON.parse(localStorage.getItem("596853"));
-        let completeDb = JSON.parse(localStorage.getItem("596853Complete"));
-
+        let originalDb = JSON.parse(localStorage.getItem("ListTableData"));
+        let completeDb = JSON.parse(localStorage.getItem("ScriptAppData"));
+        console.log(originalDb);
         let j=1;
-        while(originalDb.tasks[j]!=null){
+        while(originalDb.items[j]!=null){
             j++;
         }
-        console.log(j);
+        
         let i=1;
-        while(downloadedOriginal.tasks[i]!=null){
-            originalDb.tasks[j++] = downloadedOriginal.tasks[i];
+        while(downloadedOriginal.items[i]!=null){
+            originalDb.items[j++] = downloadedOriginal.items[i];
             i++;    
         }
-        console.log(originalDb);
-        localStorage.setItem("596853", JSON.stringify(originalDb));
+        
+        localStorage.setItem("ListTableData", JSON.stringify(originalDb));
 
         j=1;
         while(completeDb.tasks[j]!=null){
             j++;
         }
+        console.log("j: "+j);
         i=1;
         while(downloadedCompleted.tasks[i]!=null){
             completeDb.tasks[j++] = downloadedCompleted.tasks[i];
             i++;
         }
-        localStorage.setItem("596853Complete", JSON.stringify(completeDb));
+        console.log(completeDb);
+        localStorage.setItem("ScriptAppData", JSON.stringify(completeDb));
         spinner.classList.remove("active");
     });
+    
     }
+    
     else{
         spinner.classList.remove("active");
         alert("username can't be NULL !");
     }
+    
         
-
+    
         Openwindow('getuname');
     
 }
-
-
-

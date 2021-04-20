@@ -1,3 +1,13 @@
+if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("sw.js").then(
+        registration => {
+            console.log("SW registered");
+            console.log(registration);
+        }
+    ).catch(error => {
+        console.log("SW failed");
+    })
+}
 
 
 function swipeleft1(){
@@ -422,21 +432,6 @@ function inputData(){
     togglePopup('popupTask');
     renderer("ScriptAppData", ".AllTasks");
 
-}
-
-function deleteData(){
-    if(confirm("Are you sure? You are about to wipe out whole data")){
-        let len = localStorage.length;
-        for(let i=0; i< len; i++){
-            let tempkey = localStorage.key(0);
-            localStorage.removeItem(tempkey);
-            
-        }
-        alert("All data deleted!!");
-    }
-    else{
-        alert("Deletion aborted");
-    }
 }
 
 function handleClick(){

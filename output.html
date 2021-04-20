@@ -20,41 +20,41 @@
     <title>Application</title>
   </head>
   <body>
-	<header style="display: flex; justify-content: center; align-items: center; height: 2.5rem; position: relative;">
-		<p id="scriptTitle" style="font-size: 1.3rem; font-weight: bold;"></p>
-	</header>
-
-	
-
-	<div class="containsinputs">
-    <div class="inputKey">
-      <input type="password" id="key" placeholder=" Enter key.." onkeyup="fetchDecryption()">
-
-      <div style="display: flex; height: 2rem;">
-          <div class="copyicon" onclick="copyElementText()">
-              <i class="fas fa-clipboard"></i>
-          </div>
-          <div class="edticon" onclick="edtElement()">
-              <i class="fas fa-pen"></i>
-          </div>
-          <div class="delicon" onclick="delElement()">
-              <i class="far fa-trash-alt"></i>
-          </div>
-    </div>
+    <header style="display: flex; justify-content: center; align-items: center; height: 2.5rem; position: relative;">
+      <p id="scriptTitle" style="font-size: 1.3rem; font-weight: bold;"></p>
+    </header>
+  
     
-  </div>	
-  </div>
-	  
-	
-    <div class="addbutnn"></div>    
-
-    <div class="decryptedMsg">
-        <p id="msgdecrypt">
-            
-        </p>
+  
+    <div class="containsinputs">
+      <div class="inputKey">
+        <input type="password" id="key" placeholder=" Enter key.." onkeyup="fetchDecryption()">
+  
+        <div style="display: flex; height: 2rem;">
+            <div class="copyicon" onclick="copyElementText()">
+                <i class="fas fa-clipboard"></i>
+            </div>
+            <div class="edticon" onclick="edtElement()">
+                <i class="fas fa-pen"></i>
+            </div>
+            <div class="delicon" onclick="delElement()">
+                <i class="far fa-trash-alt"></i>
+            </div>
+      </div>
+      
+    </div>	
     </div>
-
-
-	<script src="./output.js"></script>
+      
+    
+      <div class="addbutnn"></div>    
+  
+      <div class="decryptedMsg">
+          <p id="msgdecrypt">
+              
+          </p>
+      </div>
+  
+  
+    <script src="./output.js"></script>
   </body>
 </html>
