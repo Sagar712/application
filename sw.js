@@ -21,7 +21,7 @@ self.addEventListener("fetch", e => {
 
 self.addEventListener('activate', function(event) {
 
-    var cacheAllowlist = ['secretscript_v6'];
+    var cacheAllowlist = ['secretscript_v6', 'todo-17421'];
   
     event.waitUntil(
       caches.keys().then(function(cacheNames) {
