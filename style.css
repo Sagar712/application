@@ -334,7 +334,7 @@ tr:nth-last-child(1){
 }
 .backBtn{
     position: absolute;
-    left: 8%;
+    right: 8%;
     color: white;
     height: 2rem;
     width: 4.7rem;

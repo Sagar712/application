@@ -69,7 +69,7 @@ function popupmenu() {
         num1=1;
     }
     else if(num1==1){
-        icon.className='fas fa-bars';
+        icon.className='fas fa-ellipsis-v';
         num1=0;
     }
     
