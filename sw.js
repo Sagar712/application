@@ -1,6 +1,6 @@
 self.addEventListener("install", e => {
     e.waitUntil(
-        caches.open("secretscript_v6").then(cache => {
+        caches.open("secretscript_v7").then(cache => {
             return cache.addAll(["./", "./app.js", "./style.css", "./mask294.png",
              "./contact.html", "./howto.html", "./otherstyle.css",
               "./output.html", "./output.js", "./backup.html", "./backup.js", "./backstyle.css",
@@ -22,7 +22,7 @@ self.addEventListener("fetch", e => {
 
 self.addEventListener('activate', function(event) {
 
-    var cacheAllowlist = ['secretscript_v6', 'todo-17421'];
+    var cacheAllowlist = ['secretscript_v7', 'todo-17421'];
   
     event.waitUntil(
       caches.keys().then(function(cacheNames) {
