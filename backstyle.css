@@ -13,10 +13,13 @@ body{
 }
 
 .backbtnar{
+    position: sticky;
+    top: 0;
     width: 100vw;
     display: flex;
-    margin-top: 1rem;
+    height: 4rem;
     justify-content: flex-end;
+    align-items: center;
 }
 .backBtn3{
     margin-right: 8vw;
@@ -286,8 +289,7 @@ body{
     }
     .leftcontainer{
         height: fit-content;
-        flex: 1;
-        
+        flex: 1;   
     }
     
     .rightcontainer{

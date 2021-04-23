@@ -30,8 +30,6 @@ function popupmenu() {
     
 }
 
-
-
 function Openwindow(divname) {
     let win = document.querySelector(`.${divname}`);
     let overlay = document.querySelector(`.overlayforclose`);

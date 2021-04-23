@@ -527,7 +527,7 @@ function renderer(key, classId) {
             let color;
             let newDiv;
             if(status1 == "Default key"){
-                current_status = 'fas fa-unlock-alt';
+                current_status = 'fas fa-lock-open';
                 color = 'yellow';
             }
                 

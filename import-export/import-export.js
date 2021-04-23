@@ -12,6 +12,8 @@ inputDial.addEventListener('change', function(e){
             const allData = JSON.parse(reader.result);
             console.log(allData);
             if(allData.tasks != null && allData.items != null){
+                console.log(allData.tasks);
+                DataAppend(allData.tasks, allData.items);
                 alert("import successful");
             }
             else{
@@ -23,9 +25,74 @@ inputDial.addEventListener('change', function(e){
             alert("import Failed !\nPossible reasons:"+
             "\n• wrong name\n• extension is not .json\n• file corrupted(very rare)");
         }
+
     }
     reader.readAsText(inputDial.files[0]);
 });
+
+function DataAppend(tasks, items) {
+    let downloadedOriginal = {
+        items : {
+                    
+        }
+    }
+    let downloadedCompleted = {
+        tasks:{
+                    
+        }
+    }
+    downloadedOriginal.items = items;
+    downloadedCompleted.tasks = tasks;
+        
+        if(localStorage.getItem("ScriptAppData")==null){
+            const masterDb = {
+                tasks:{
+                    
+                }
+            }
+    
+            let db = JSON.stringify(masterDb);
+            localStorage.setItem("ScriptAppData", db);
+        }
+        if(localStorage.getItem("ListTableData")==null){
+            const masterdb = {
+                items : {
+                    
+                }
+            }
+    
+            let db = JSON.stringify(masterdb);
+            localStorage.setItem("ListTableData", db);
+        }
+        let originalDb = JSON.parse(localStorage.getItem("ListTableData"));
+        let completeDb = JSON.parse(localStorage.getItem("ScriptAppData"));
+        console.log(originalDb);
+        let j=1;
+        while(originalDb.items[j]!=null){
+            j++;
+        }
+        
+        let i=1;
+        while(downloadedOriginal.items[i]!=null){
+            originalDb.items[j++] = downloadedOriginal.items[i];
+            i++;    
+        }
+        
+        localStorage.setItem("ListTableData", JSON.stringify(originalDb));
+
+        j=1;
+        while(completeDb.tasks[j]!=null){
+            j++;
+        }
+        console.log("j: "+j);
+        i=1;
+        while(downloadedCompleted.tasks[i]!=null){
+            completeDb.tasks[j++] = downloadedCompleted.tasks[i];
+            i++;
+        }
+        console.log(completeDb);
+        localStorage.setItem("ScriptAppData", JSON.stringify(completeDb));
+}
 
 function exportFile() {
     let masterDb = {
