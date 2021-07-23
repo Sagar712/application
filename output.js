@@ -118,7 +118,7 @@ function saveItem() {
     console.log(allItems);
     localStorage.setItem("ScriptAppData", JSON.stringify(allItems));
     document.querySelector(".addbutnn").innerHTML = "";
-    document.querySelector(".decryptedMsg").innerHTML = '<pre id="msgdecrypt"></pre>';
+    document.querySelector(".decryptedMsg").innerHTML = '<p id="msgdecrypt"></p>';
     fetchDecryption();
 }
 

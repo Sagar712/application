@@ -1,3 +1,4 @@
+
 if("serviceWorker" in navigator){
     navigator.serviceWorker.register("sw.js").then(
         registration => {
@@ -9,42 +10,6 @@ if("serviceWorker" in navigator){
     })
 }
 
-
-function swipeleft1(){
-    document.getElementById("content1").style.transform="translateX(0%)";
-    document.getElementById("content2").style.transform="translateX(100%)";
-    document.getElementById("content3").style.transform="translateX(200%)";
-    document.querySelectorAll("#icon1")[0].style.color="rgb(65, 47, 0)";
-    document.querySelectorAll("#icon1")[1].style.color="rgb(65, 47, 0)";
-    document.querySelectorAll("#icon2")[0].style.color="rgb(148, 108, 0)";
-    document.querySelectorAll("#icon2")[1].style.color="rgb(148, 108, 0)";
-    document.getElementById("icon3").style.color="rgb(148, 108, 0)";
-    document.getElementById("allcont").scrollTop=0;
-}
-
-function swipeleft2(){
-    document.getElementById("content1").style.transform="translateX(-100%)";
-    document.getElementById("content2").style.transform="translateX(0%)";
-    document.getElementById("content3").style.transform="translateX(100%)";
-    document.querySelectorAll("#icon2")[0].style.color="rgb(65, 47, 0)";
-    document.querySelectorAll("#icon2")[1].style.color="rgb(65, 47, 0)";
-    document.querySelectorAll("#icon1")[0].style.color="rgb(148, 108, 0)";
-    document.querySelectorAll("#icon1")[1].style.color="rgb(148, 108, 0)";
-    document.getElementById("icon3").style.color="rgb(148, 108, 0)";
-    document.getElementById("allcont").scrollTop=0;
-}
-
-function swipeleft3(){
-    document.getElementById("content1").style.transform="translateX(-200%)";
-    document.getElementById("content2").style.transform="translateX(-100%)";
-    document.getElementById("content3").style.transform="translateX(0%)";
-    document.getElementById("icon3").style.color="rgb(65, 47, 0)";
-    document.querySelectorAll("#icon2")[0].style.color="rgb(148, 108, 0)";
-    document.querySelectorAll("#icon2")[1].style.color="rgb(148, 108, 0)";
-    document.querySelectorAll("#icon1")[0].style.color="rgb(148, 108, 0)";
-    document.querySelectorAll("#icon1")[1].style.color="rgb(148, 108, 0)";
-    document.getElementById("allcont").scrollTop=0;
-}
 
 let chngeicn=0;
 const overlay = document.querySelector(".ovelay2");
@@ -472,49 +437,6 @@ function indexAllocTask(index) {
     location.href = "./output.html";
 }
 
-function listRendrer() {
-    let names = [];
-    let quants = [];
-    let prices = [];
-	console.log("clicked");
-	let str=`
-    <tr>
-    	<th>Sr</th>
-	    <th>Name</th>
-	    <th>Quatity</th>
-	    <th>Prices </th>
-	    <th>Remv</th>
-    </tr>`;
-	
-    if(localStorage.getItem("ListTableData") == null){
-        celldata.innerHTML = "";
-        return;
-    }
-    
-    let masterDb = JSON.parse(localStorage.getItem("ListTableData"));
-    let j =1;
-    let i=0;
-    while(masterDb.items[j]!=null){
-        names[i] = masterDb.items[j].name;
-	    quants[i] = masterDb.items[j].quant;
-	    prices[i++] = masterDb.items[j].price;
-        j++;
-    }
-    
-
-    let newDb = JSON.parse(localStorage.getItem("ListTableData"));
-	
-	for(let k=1; k<j; k++){
-		str += `<tr><td>${k}</td><td>${newDb.items[k].name}</td>
-        <td>${newDb.items[k].quant}</td><td>${newDb.items[k].price}</td>
-        <td><button onclick = "handler(this.id)"class="clos" id="${k}">X</button></td></tr>`;
-	}
-	celldata.innerHTML = totalcalc(str, names, quants, prices);
-    resetval();
-}
-
-listRendrer();
-
 function renderer(key, classId) {
     if(localStorage.getItem(key)!=null){
         let obj = JSON.parse(localStorage.getItem(key));
@@ -539,7 +461,7 @@ function renderer(key, classId) {
             
                 newDiv= `<div class='sample'>
                             <div class="status">
-                                <i style="color: ${color}; border: 2px solid ${color};" id="statusIcon" class="${current_status}" onclick="completeTask(${i})"></i>
+                                <i style="border: 2px solid ${color};" id="statusIcon" class="${current_status}" onclick="completeTask(${i})"></i>
                             </div>
                             <div class="contentContainer" onclick="indexAllocTask(${i})">
                                 <h2>${obj.tasks[i].title}</h2>
